@@ -1,0 +1,84 @@
+/* ============================================================
+   BorderGlow — directional edge-aware glow for cards
+   Works on premium dark UI and off-white light UI.
+   ============================================================ */
+
+.glow {
+  /* Tunables (override per-element) */
+  --glow: hsl(345 100% 60%);
+  --glow-radius: 36px;
+  --edge-sensitivity: 30;   /* higher = glow appears further from edge */
+  --cone-spread: 26;        /* deg half-width of the conic highlight */
+
+  /* Driven by JS */
+  --edge-proximity: 0;      /* 0 (center / idle) .. 100 (hugging an edge) */
+  --cursor-angle: 0deg;     /* direction from card center to pointer */
+
+  /* Derived */
+  --_p: calc(var(--edge-proximity) / 100);
+  --_spread: calc(var(--cone-spread) * 1deg);
+
+  position: relative;
+  border-radius: inherit;
+  isolation: isolate;
+}
+
+/* The conic directional highlight that rides the border. */
+.glow::before,
+.glow::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: var(--_p);
+  transition: opacity 320ms cubic-bezier(.22, .61, .36, 1);
+  z-index: -1;
+}
+
+/* ::before = crisp directional rim, masked to the border ring only. */
+.glow::before {
+  padding: var(--glow-radius);
+  background:
+    conic-gradient(
+      from var(--cursor-angle) at 50% 50%,
+      transparent 0deg,
+      transparent calc(180deg - var(--_spread) * 2),
+      color-mix(in oklch, var(--glow) 35%, transparent) calc(180deg - var(--_spread)),
+      var(--glow) 180deg,
+      color-mix(in oklch, var(--glow) 35%, transparent) calc(180deg + var(--_spread)),
+      transparent calc(180deg + var(--_spread) * 2),
+      transparent 360deg
+    );
+  /* Carve out the interior so only a glowing ring remains. */
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+          mask-composite: exclude;
+}
+
+/* ::after = soft colored mesh-y fill that blooms inward from the lit edge. */
+.glow::after {
+  background:
+    radial-gradient(
+      120% 120% at
+      calc(50% + 50% * cos(var(--cursor-angle)))
+      calc(50% + 50% * sin(var(--cursor-angle))),
+      color-mix(in oklch, var(--glow) 60%, transparent) 0%,
+      color-mix(in oklch, var(--glow) 22%, transparent) 28%,
+      transparent 60%
+    );
+  filter: blur(calc(var(--glow-radius) * 0.5));
+  opacity: calc(var(--_p) * 0.7);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glow::before,
+  .glow::after {
+    display: none;
+  }
+}

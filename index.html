@@ -10,9 +10,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --red:#ff0033; --red-d:#d10029; --red-l:#ff5d76;
-  --blue:#195edd; --ink:#343333; --paper:#f9f9f9; --paper-2:#efece8;
-  --white:#ffffff; --line:rgba(52,51,51,.12);
+  --red:#FF335C; --red-d:#E11D48; --red-l:#FF8DA3;
+  --blue:#4C7BF5; --blue-l:#A8C0FB;
+  --ink:#0B0A10; --ink-2:#1C1B22; --bg-alt:#13111B; --surface:#1A1722;
+  --paper:#F7F5F2; --paper-2:#EDEAE4; --white:#ffffff;
+  --line:rgba(28,27,34,.12); --line-d:rgba(255,255,255,.10);
+  --grad:linear-gradient(115deg,#FF335C 0%,#FF4E73 38%,#6E6BF0 72%,#4C7BF5 100%);
+  --glow:hsl(348 100% 66% / .45); --halo:hsl(232 88% 63% / .35);
   --serif:'Fraunces',Georgia,serif; --sans:'Inter',system-ui,sans-serif; --mono:'Space Mono',monospace;
   --maxw:1180px;
 }
@@ -45,15 +49,16 @@ nav.on-dark .lang button.on{background:var(--paper);color:var(--ink)}
 @media(max-width:820px){nav .links{display:none}}
 
 /* HERO */
-.hero{min-height:100vh;display:flex;align-items:center;position:relative;background:var(--ink);color:var(--paper);overflow:hidden}
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;background:radial-gradient(120% 90% at 80% 10%,var(--halo),transparent 55%),radial-gradient(90% 80% at 0% 100%,hsl(348 90% 55% / .18),transparent 55%),var(--ink);color:var(--paper);overflow:hidden}
+.hero>canvas{position:absolute!important;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
 .hero .wrap{position:relative;z-index:3;padding-top:90px;padding-bottom:60px}
-.hero h1{font-size:clamp(2.8rem,8vw,6.4rem);color:var(--paper);letter-spacing:-.02em}
-.hero h1 em{font-style:italic;color:var(--red-l)}
-.hero .lede{font-size:clamp(1.05rem,2.2vw,1.45rem);max-width:620px;margin-top:26px;color:rgba(249,249,249,.78);font-weight:400}
+.hero h1{font-size:clamp(2.9rem,8.4vw,6.8rem);color:var(--paper);letter-spacing:-.025em;line-height:1}
+.hero h1 em{font-style:italic;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.hero .lede{font-size:clamp(1.05rem,2.2vw,1.45rem);max-width:620px;margin-top:26px;color:rgba(247,245,242,.8);font-weight:400}
 .hero .sign{font-family:var(--mono);font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--red-l);margin-top:34px;display:flex;align-items:center;gap:12px}
 .hero .sign::before{content:"";width:46px;height:1px;background:var(--red-l)}
-.hero-art{position:absolute;right:-6%;top:50%;transform:translateY(-50%);width:min(58vw,720px);opacity:.9;z-index:1;pointer-events:none}
-@media(max-width:900px){.hero-art{opacity:.18;right:-20%}}
+.hero-art{position:absolute;right:-6%;top:50%;transform:translateY(-50%);width:min(48vw,560px);opacity:.5;z-index:2;pointer-events:none}
+@media(max-width:900px){.hero-art{opacity:.12;right:-20%}}
 .scroll-cue{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:3;font-family:var(--mono);font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(249,249,249,.5);display:flex;flex-direction:column;align-items:center;gap:8px}
 .scroll-cue span{width:1px;height:34px;background:linear-gradient(var(--red-l),transparent);animation:cue 2s infinite}
 @keyframes cue{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}50.1%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
@@ -76,14 +81,12 @@ section{padding:118px 0;position:relative}
 .grid-exp{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 @media(max-width:900px){.grid-exp{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.grid-exp{grid-template-columns:1fr}}
-.exp{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:30px 26px;position:relative;overflow:hidden;transition:.35s}
-.exp::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 100% 0,rgba(255,0,51,.06),transparent 60%);opacity:0;transition:.35s}
-.exp:hover{transform:translateY(-6px);border-color:rgba(255,0,51,.4);box-shadow:0 24px 48px -28px rgba(52,51,51,.5)}
-.exp:hover::after{opacity:1}
-.exp .ic{width:46px;height:46px;margin-bottom:18px;color:var(--red)}
-.exp .n{font-family:var(--mono);font-size:.7rem;color:rgba(52,51,51,.45);letter-spacing:.16em}
+.exp{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:30px 26px;position:relative;transition:transform .35s,border-color .35s,box-shadow .35s}
+.exp:hover{transform:translateY(-6px);border-color:rgba(255,51,92,.45);box-shadow:0 24px 48px -28px rgba(11,10,16,.5)}
+.exp .ic{width:46px;height:46px;margin-bottom:18px;color:var(--red-d)}
+.exp .n{font-family:var(--mono);font-size:.7rem;color:rgba(28,27,34,.42);letter-spacing:.16em}
 .exp h3{font-size:1.3rem;margin:8px 0 10px}
-.exp p{font-size:.95rem;color:rgba(52,51,51,.72)}
+.exp p{font-size:.95rem;color:rgba(28,27,34,.72)}
 
 /* TIMELINE */
 .timeline{margin-top:20px}
@@ -274,6 +277,35 @@ footer{background:var(--ink);color:rgba(249,249,249,.4);font-family:var(--mono);
 .lab-stage.run .bub{animation:fadeUp .5s ease-out forwards}
 .lab-stage.run .bub.b2{animation-delay:.5s}.lab-stage.run .bub.b3{animation-delay:1s}
 
+/* ===== CardSwap (ported) ===== */
+.cs-container{position:relative;width:100%;height:100%;perspective:900px;transform-style:preserve-3d;overflow:visible}
+.cs-container>.cs-card{position:absolute;top:50%;left:50%;transform-origin:center center;transform-style:preserve-3d;backface-visibility:hidden;-webkit-backface-visibility:hidden;will-change:transform;box-sizing:border-box}
+@media(prefers-reduced-motion:reduce){.cs-container>.cs-card{transition:none!important;will-change:auto}}
+
+/* ===== BorderGlow (ported) ===== */
+.glow{--glow:hsl(348 100% 64%);--glow-radius:34px;--edge-sensitivity:30;--cone-spread:26;--edge-proximity:0;--cursor-angle:0deg;--_p:calc(var(--edge-proximity)/100);--_spread:calc(var(--cone-spread)*1deg);position:relative;border-radius:inherit;isolation:isolate}
+.glow::before,.glow::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:var(--_p);transition:opacity 320ms cubic-bezier(.22,.61,.36,1);z-index:-1}
+.glow::before{padding:var(--glow-radius);background:conic-gradient(from var(--cursor-angle) at 50% 50%,transparent 0deg,transparent calc(180deg - var(--_spread)*2),color-mix(in oklch,var(--glow) 35%,transparent) calc(180deg - var(--_spread)),var(--glow) 180deg,color-mix(in oklch,var(--glow) 35%,transparent) calc(180deg + var(--_spread)),transparent calc(180deg + var(--_spread)*2),transparent 360deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude}
+.glow::after{background:radial-gradient(120% 120% at calc(50% + 50%*cos(var(--cursor-angle))) calc(50% + 50%*sin(var(--cursor-angle))),color-mix(in oklch,var(--glow) 55%,transparent) 0%,color-mix(in oklch,var(--glow) 20%,transparent) 28%,transparent 60%);filter:blur(calc(var(--glow-radius)*.5));opacity:calc(var(--_p)*.7)}
+@media(prefers-reduced-motion:reduce){.glow::before,.glow::after{display:none}}
+
+/* ===== STORY (value chain via CardSwap) ===== */
+.story{background:var(--bg-alt);color:var(--paper);overflow:hidden}
+.story .sec-head h2{color:var(--paper)}
+.story .sec-head p{color:rgba(247,245,242,.66)}
+.story-wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+@media(max-width:860px){.story-wrap{grid-template-columns:1fr;gap:10px}}
+.story-stage{position:relative;height:360px}
+.cs-card.vc{width:300px;height:200px;border-radius:18px;border:1px solid var(--line-d);background:linear-gradient(165deg,var(--surface),#0e0c14);box-shadow:0 30px 60px -30px #000;padding:24px;display:flex;flex-direction:column;justify-content:space-between;color:var(--paper)}
+.cs-card.vc .vc-no{font-family:var(--mono);font-size:.7rem;letter-spacing:.18em;color:var(--red-l)}
+.cs-card.vc h4{font-family:var(--serif);font-size:1.6rem;font-weight:600;letter-spacing:-.01em}
+.cs-card.vc p{font-size:.88rem;color:rgba(247,245,242,.66)}
+.cs-card.vc .vc-ic{width:30px;height:30px;color:var(--red-l)}
+.story-list{list-style:none;display:flex;flex-direction:column;gap:2px}
+.story-list li{display:flex;gap:16px;padding:15px 0;border-top:1px solid var(--line-d);font-size:1.02rem;color:rgba(247,245,242,.82);align-items:baseline;cursor:default;transition:.3s}
+.story-list li:hover{color:var(--paper);padding-left:8px}
+.story-list li b{font-family:var(--mono);font-size:.74rem;color:var(--red-l);min-width:30px}
+
 @media(prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;transition-duration:.01ms!important}}
 </style>
 </head>
@@ -313,8 +345,8 @@ footer{background:var(--ink);color:rgba(249,249,249,.4);font-family:var(--mono);
   </svg>
   <div class="wrap">
     <p class="eyebrow reveal" data-i="hero.eyebrow">Designer · Entrepreneur · Innovation × IA</p>
-    <h1 class="reveal" style="transition-delay:.08s" data-i="hero.h1">Je conçois<br>l'innovation<br><em>par la pratique.</em></h1>
-    <p class="lede reveal" style="transition-delay:.16s" data-i="hero.lede">Gestion de projets d'innovation par le Design Thinking, déploiement rapide de solutions et intégration de l'IA dans la stratégie, l'expérience client et la formation des organisations.</p>
+    <h1 class="reveal" style="transition-delay:.08s" data-i="hero.h1">De l'intuition<br>à la <em>solution déployée.</em></h1>
+    <p class="lede reveal" style="transition-delay:.16s" data-i="hero.lede">Tout commence par une intuition. Je la transforme en impact — Design Thinking, recherche client et IA appliquée, jusqu'à la solution livrée et mise en production.</p>
     <p class="sign reveal" style="transition-delay:.24s">« Measure twice, cut once. »</p>
   </div>
   <div class="scroll-cue"><span data-i="hero.scroll">Défiler</span><span></span></div>
@@ -358,6 +390,21 @@ footer{background:var(--ink);color:rgba(249,249,249,.4);font-family:var(--mono);
     <p class="eyebrow reveal" data-i="man.eyebrow">Ce qui me détermine</p>
     <p class="big reveal" style="margin-top:22px" data-i="man.big" data-i-html>Je crois à l'innovation <b>concrète</b> : celle qui se construit, se teste avec les utilisateurs et se <b>déploie</b>. Designer de formation, entrepreneur dans l'âme, je transforme une intuition stratégique en <b>solution réelle</b> — conçue et mise en production avec mes équipes et moi. Aujourd'hui l'<b>IA appliquée</b> est mon nouveau matériau : je l'intègre au plus près des métiers pour que les organisations passent de la promesse à l'usage.</p>
     <div class="pills reveal" id="pills"></div>
+  </div>
+</section>
+
+<!-- STORY · value chain -->
+<section class="story" id="story">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow reveal" style="color:var(--red-l)" data-i="story.eyebrow">Ma chaîne de valeur</p>
+      <h2 class="reveal" data-i="story.title" data-i-html>De l'intuition à<br>la solution déployée.</h2>
+      <p class="reveal" data-i="story.sub">Je maîtrise toute la chaîne — le design et l'IA comme leviers pour avancer.</p>
+    </div>
+    <div class="story-wrap">
+      <ul class="story-list reveal" id="storyList"></ul>
+      <div class="story-stage reveal"><div class="cs-container" id="storyStage"></div></div>
+    </div>
   </div>
 </section>
 
@@ -445,6 +492,502 @@ footer{background:var(--ink);color:rgba(249,249,249,.4);font-family:var(--mono);
 <footer>VICTOR BOUIN · DESIGN · INNOVATION · IA — © 2026 EXOFLOW</footer>
 
 <script>
+
+/* ===== ported interactive modules (RippleGrid / CardSwap / BorderGlow) ===== */
+window.initRippleGrid = function initRippleGrid(container, opts) {
+  opts = opts || {};
+  var noop = function () {};
+  if (!container) return noop;
+
+  var canvas = document.createElement("canvas");
+  canvas.style.width = "100%";
+  canvas.style.height = "100%";
+  canvas.style.display = "block";
+  container.appendChild(canvas);
+
+  var gl =
+    canvas.getContext("webgl", { alpha: true, premultipliedAlpha: false }) ||
+    canvas.getContext("experimental-webgl", { alpha: true, premultipliedAlpha: false });
+
+  if (!gl) {
+    if (canvas.parentNode) canvas.parentNode.removeChild(canvas);
+    return noop;
+  }
+
+  function hexToVec3(hex, fallback) {
+    if (typeof hex !== "string") return fallback;
+    var h = hex.replace("#", "").trim();
+    if (h.length === 3) {
+      h = h[0] + h[0] + h[1] + h[1] + h[2] + h[2];
+    }
+    if (h.length !== 6) return fallback;
+    var r = parseInt(h.substring(0, 2), 16);
+    var g = parseInt(h.substring(2, 4), 16);
+    var b = parseInt(h.substring(4, 6), 16);
+    if (isNaN(r) || isNaN(g) || isNaN(b)) return fallback;
+    return [r / 255, g / 255, b / 255];
+  }
+
+  var defaults = {
+    enableRainbow: false,
+    gridColor: "#ff3357",
+    rippleIntensity: 0.04,
+    gridSize: 14.0,
+    gridThickness: 26.0,
+    fadeDistance: 1.5,
+    vignetteStrength: 1.8,
+    glowIntensity: 0.12,
+    opacity: 0.55,
+    gridRotation: 0,
+    mouseInteraction: true,
+    mouseInteractionRadius: 0.8
+  };
+
+  function pick(name) {
+    return opts[name] !== undefined ? opts[name] : defaults[name];
+  }
+
+  var config = {
+    enableRainbow: !!pick("enableRainbow"),
+    gridColor: hexToVec3(pick("gridColor"), [1.0, 0.2, 0.34]),
+    rippleIntensity: +pick("rippleIntensity"),
+    gridSize: +pick("gridSize"),
+    gridThickness: +pick("gridThickness"),
+    fadeDistance: +pick("fadeDistance"),
+    vignetteStrength: +pick("vignetteStrength"),
+    glowIntensity: +pick("glowIntensity"),
+    opacity: +pick("opacity"),
+    gridRotation: +pick("gridRotation"),
+    mouseInteraction: !!pick("mouseInteraction"),
+    mouseInteractionRadius: +pick("mouseInteractionRadius")
+  };
+
+  var vertSrc =
+    "attribute vec2 position; varying vec2 vUv; void main(){ vUv = position*0.5+0.5; gl_Position = vec4(position,0.0,1.0); }";
+
+  var fragSrc =
+    "precision highp float;\n" +
+    "uniform float iTime; uniform vec2 iResolution; uniform bool enableRainbow; uniform vec3 gridColor; uniform float rippleIntensity; uniform float gridSize; uniform float gridThickness; uniform float fadeDistance; uniform float vignetteStrength; uniform float glowIntensity; uniform float opacity; uniform float gridRotation; uniform bool mouseInteraction; uniform vec2 mousePosition; uniform float mouseInfluence; uniform float mouseInteractionRadius; varying vec2 vUv; float pi=3.141592; mat2 rotate(float a){float s=sin(a),c=cos(a);return mat2(c,-s,s,c);} void main(){ vec2 uv=vUv*2.0-1.0; uv.x*=iResolution.x/iResolution.y; if(gridRotation!=0.0) uv=rotate(gridRotation*pi/180.0)*uv; float dist=length(uv); float func=sin(pi*(iTime-dist)); vec2 rippleUv=uv+uv*func*rippleIntensity; if(mouseInteraction&&mouseInfluence>0.0){ vec2 mouseUv=(mousePosition*2.0-1.0); mouseUv.x*=iResolution.x/iResolution.y; float md=length(uv-mouseUv); float influence=mouseInfluence*exp(-md*md/(mouseInteractionRadius*mouseInteractionRadius)); float mw=sin(pi*(iTime*2.0-md*3.0))*influence; rippleUv+=normalize(uv-mouseUv)*mw*rippleIntensity*0.3; } vec2 a=sin(gridSize*0.5*pi*rippleUv-pi/2.0); vec2 b=abs(a); float aaw=0.5; vec2 sb=vec2(smoothstep(0.0,aaw,b.x),smoothstep(0.0,aaw,b.y)); vec3 color=vec3(0.0); color+=exp(-gridThickness*sb.x*(0.8+0.5*sin(pi*iTime))); color+=exp(-gridThickness*sb.y); color+=0.5*exp(-(gridThickness/4.0)*sin(sb.x)); color+=0.5*exp(-(gridThickness/3.0)*sb.y); if(glowIntensity>0.0){ color+=glowIntensity*exp(-gridThickness*0.5*sb.x); color+=glowIntensity*exp(-gridThickness*0.5*sb.y);} float ddd=exp(-2.0*clamp(pow(dist,fadeDistance),0.0,1.0)); vec2 vc=vUv-0.5; float vd=length(vc); float vig=1.0-pow(vd*2.0,vignetteStrength); vig=clamp(vig,0.0,1.0); vec3 t; if(enableRainbow){ t=vec3(uv.x*0.5+0.5*sin(iTime),uv.y*0.5+0.5*cos(iTime),pow(cos(iTime),4.0))+0.5; } else { t=gridColor; } float ff=ddd*vig; float alpha=length(color)*ff*opacity; gl_FragColor=vec4(color*t*ff*opacity,alpha); }";
+
+  function compile(type, src) {
+    var sh = gl.createShader(type);
+    gl.shaderSource(sh, src);
+    gl.compileShader(sh);
+    if (!gl.getShaderParameter(sh, gl.COMPILE_STATUS)) {
+      gl.deleteShader(sh);
+      return null;
+    }
+    return sh;
+  }
+
+  var vs = compile(gl.VERTEX_SHADER, vertSrc);
+  var fs = compile(gl.FRAGMENT_SHADER, fragSrc);
+
+  function fail() {
+    if (canvas.parentNode) canvas.parentNode.removeChild(canvas);
+    return noop;
+  }
+
+  if (!vs || !fs) return fail();
+
+  var program = gl.createProgram();
+  gl.attachShader(program, vs);
+  gl.attachShader(program, fs);
+  gl.bindAttribLocation(program, 0, "position");
+  gl.linkProgram(program);
+  if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+    return fail();
+  }
+  gl.useProgram(program);
+
+  // Fullscreen triangle
+  var buffer = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+  gl.bufferData(
+    gl.ARRAY_BUFFER,
+    new Float32Array([-1, -1, 3, -1, -1, 3]),
+    gl.STATIC_DRAW
+  );
+  var posLoc = gl.getAttribLocation(program, "position");
+  gl.enableVertexAttribArray(posLoc);
+  gl.vertexAttribPointer(posLoc, 2, gl.FLOAT, false, 0, 0);
+
+  var U = {};
+  [
+    "iTime",
+    "iResolution",
+    "enableRainbow",
+    "gridColor",
+    "rippleIntensity",
+    "gridSize",
+    "gridThickness",
+    "fadeDistance",
+    "vignetteStrength",
+    "glowIntensity",
+    "opacity",
+    "gridRotation",
+    "mouseInteraction",
+    "mousePosition",
+    "mouseInfluence",
+    "mouseInteractionRadius"
+  ].forEach(function (name) {
+    U[name] = gl.getUniformLocation(program, name);
+  });
+
+  // Static uniforms
+  gl.uniform1i(U.enableRainbow, config.enableRainbow ? 1 : 0);
+  gl.uniform3f(U.gridColor, config.gridColor[0], config.gridColor[1], config.gridColor[2]);
+  gl.uniform1f(U.rippleIntensity, config.rippleIntensity);
+  gl.uniform1f(U.gridSize, config.gridSize);
+  gl.uniform1f(U.gridThickness, config.gridThickness);
+  gl.uniform1f(U.fadeDistance, config.fadeDistance);
+  gl.uniform1f(U.vignetteStrength, config.vignetteStrength);
+  gl.uniform1f(U.glowIntensity, config.glowIntensity);
+  gl.uniform1f(U.opacity, config.opacity);
+  gl.uniform1f(U.gridRotation, config.gridRotation);
+  gl.uniform1i(U.mouseInteraction, config.mouseInteraction ? 1 : 0);
+  gl.uniform1f(U.mouseInteractionRadius, config.mouseInteractionRadius);
+
+  gl.enable(gl.BLEND);
+  gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+
+  // Mouse state
+  var mouse = { x: 0.5, y: 0.5 };
+  var target = { x: 0.5, y: 0.5 };
+  var mouseInfluence = 0;
+  var targetInfluence = 0;
+
+  function onMove(e) {
+    var rect = canvas.getBoundingClientRect();
+    if (!rect.width || !rect.height) return;
+    var x = (e.clientX - rect.left) / rect.width;
+    var y = (e.clientY - rect.top) / rect.height;
+    target.x = x;
+    target.y = 1.0 - y; // flip Y
+  }
+  function onEnter() {
+    targetInfluence = 1.0;
+  }
+  function onLeave() {
+    targetInfluence = 0.0;
+  }
+
+  container.addEventListener("mousemove", onMove);
+  container.addEventListener("mouseenter", onEnter);
+  container.addEventListener("mouseleave", onLeave);
+
+  function resize() {
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var w = container.clientWidth || canvas.clientWidth || 1;
+    var h = container.clientHeight || canvas.clientHeight || 1;
+    var pw = Math.max(1, Math.round(w * dpr));
+    var ph = Math.max(1, Math.round(h * dpr));
+    if (canvas.width !== pw || canvas.height !== ph) {
+      canvas.width = pw;
+      canvas.height = ph;
+    }
+    gl.viewport(0, 0, canvas.width, canvas.height);
+  }
+  resize();
+
+  var ro = null;
+  if (typeof ResizeObserver !== "undefined") {
+    ro = new ResizeObserver(resize);
+    ro.observe(container);
+  } else {
+    window.addEventListener("resize", resize);
+  }
+
+  var raf = null;
+  var running = true;
+
+  function frame() {
+    if (!running) return;
+    raf = requestAnimationFrame(frame);
+
+    mouse.x += (target.x - mouse.x) * 0.1;
+    mouse.y += (target.y - mouse.y) * 0.1;
+    mouseInfluence += (targetInfluence - mouseInfluence) * 0.05;
+
+    gl.uniform1f(U.iTime, performance.now() * 0.001);
+    gl.uniform2f(U.iResolution, canvas.width, canvas.height);
+    gl.uniform2f(U.mousePosition, mouse.x, mouse.y);
+    gl.uniform1f(U.mouseInfluence, mouseInfluence);
+
+    gl.clearColor(0, 0, 0, 0);
+    gl.clear(gl.COLOR_BUFFER_BIT);
+    gl.drawArrays(gl.TRIANGLES, 0, 3);
+  }
+  raf = requestAnimationFrame(frame);
+
+  return function cleanup() {
+    running = false;
+    if (raf !== null) cancelAnimationFrame(raf);
+    if (ro) {
+      ro.disconnect();
+    } else {
+      window.removeEventListener("resize", resize);
+    }
+    container.removeEventListener("mousemove", onMove);
+    container.removeEventListener("mouseenter", onEnter);
+    container.removeEventListener("mouseleave", onLeave);
+    try {
+      gl.deleteProgram(program);
+      gl.deleteShader(vs);
+      gl.deleteShader(fs);
+      gl.deleteBuffer(buffer);
+    } catch (e) {}
+    if (canvas.parentNode) canvas.parentNode.removeChild(canvas);
+    var lose = gl.getExtension("WEBGL_lose_context");
+    if (lose) lose.loseContext();
+  };
+};
+
+(function () {
+  function initCardSwap(container, opts) {
+    opts = opts || {};
+    var cardDistance = opts.cardDistance != null ? opts.cardDistance : 60;
+    var verticalDistance = opts.verticalDistance != null ? opts.verticalDistance : 70;
+    var delay = opts.delay != null ? opts.delay : 4500;
+    var skewAmount = opts.skewAmount != null ? opts.skewAmount : 6;
+    var easing = opts.easing || 'cubic-bezier(0.4, 0, 0.2, 1)';
+    var durDrop = opts.durDrop != null ? opts.durDrop : 700;
+    var durReturn = opts.durReturn != null ? opts.durReturn : 700;
+    var durPromote = opts.durPromote != null ? opts.durPromote : 700;
+    var pauseOnHover = opts.pauseOnHover != null ? opts.pauseOnHover : true;
+
+    if (!container) return function () {};
+    container.classList.add('cs-container');
+
+    if (opts.cards && opts.cards.length) {
+      for (var c = 0; c < opts.cards.length; c++) {
+        var el = document.createElement('div');
+        el.className = 'cs-card';
+        el.innerHTML = opts.cards[c];
+        container.appendChild(el);
+      }
+    }
+
+    var cards = Array.prototype.slice.call(container.querySelectorAll(':scope > .cs-card'));
+    var n = cards.length;
+    if (n === 0) return function () {};
+
+    var reduced = false;
+    var mq = null;
+    try {
+      mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+      reduced = mq.matches;
+    } catch (e) {}
+
+    var slots = [];
+    for (var i = 0; i < n; i++) slots.push(i);
+
+    function placeStyle(depth) {
+      var x = depth * cardDistance;
+      var y = -depth * verticalDistance;
+      var z = -depth * cardDistance * 1.5;
+      return {
+        transform:
+          'translate(-50%, -50%) translate3d(' + x + 'px,' + y + 'px,' + z + 'px) skewY(' + (-skewAmount) + 'deg)',
+        zIndex: String(n - depth)
+      };
+    }
+
+    function layout(animate) {
+      for (var depth = 0; depth < n; depth++) {
+        var card = cards[slots[depth]];
+        var s = placeStyle(depth);
+        if (!animate) card.style.transition = 'none';
+        card.style.transform = s.transform;
+        card.style.zIndex = s.zIndex;
+        if (!animate) {
+          void card.offsetWidth;
+          card.style.transition = '';
+        }
+      }
+    }
+
+    layout(false);
+
+    var timers = [];
+    var interval = null;
+    var hovering = false;
+    var destroyed = false;
+
+    function clearTimers() {
+      for (var t = 0; t < timers.length; t++) clearTimeout(timers[t]);
+      timers = [];
+    }
+
+    function swap() {
+      if (destroyed || n < 2) return;
+      var frontIdx = slots[0];
+      var frontCard = cards[frontIdx];
+
+      frontCard.style.transition = 'transform ' + durDrop + 'ms ' + easing;
+      frontCard.style.transform =
+        'translate(-50%, -50%) translate3d(0px, 500px, 0px) skewY(' + (-skewAmount) + 'deg)';
+      frontCard.style.zIndex = String(n);
+
+      timers.push(setTimeout(function () {
+        if (destroyed) return;
+        for (var k = 0; k < n - 1; k++) slots[k] = slots[k + 1];
+        slots[n - 1] = frontIdx;
+
+        for (var depth = 0; depth < n; depth++) {
+          var card = cards[slots[depth]];
+          if (card === frontCard) continue;
+          var s = placeStyle(depth);
+          card.style.transition = 'transform ' + durPromote + 'ms ' + easing;
+          card.style.transform = s.transform;
+          card.style.zIndex = s.zIndex;
+        }
+
+        var rearDepth = n - 1;
+        var rear = placeStyle(rearDepth);
+        frontCard.style.transition = 'transform ' + durReturn + 'ms ' + easing;
+        frontCard.style.transform = rear.transform;
+        frontCard.style.zIndex = rear.zIndex;
+      }, durDrop));
+    }
+
+    function start() {
+      if (reduced || destroyed) return;
+      stop();
+      interval = setInterval(function () {
+        if (!hovering) swap();
+      }, delay);
+    }
+
+    function stop() {
+      if (interval) {
+        clearInterval(interval);
+        interval = null;
+      }
+    }
+
+    function onEnter() { hovering = true; }
+    function onLeave() { hovering = false; }
+
+    if (pauseOnHover && !reduced) {
+      container.addEventListener('mouseenter', onEnter);
+      container.addEventListener('mouseleave', onLeave);
+    }
+
+    var onMqChange = null;
+    if (mq) {
+      onMqChange = function () {
+        reduced = mq.matches;
+        clearTimers();
+        layout(false);
+        if (reduced) stop();
+        else start();
+      };
+      if (mq.addEventListener) mq.addEventListener('change', onMqChange);
+      else if (mq.addListener) mq.addListener(onMqChange);
+    }
+
+    if (!reduced) start();
+
+    return function cleanup() {
+      destroyed = true;
+      stop();
+      clearTimers();
+      if (pauseOnHover) {
+        container.removeEventListener('mouseenter', onEnter);
+        container.removeEventListener('mouseleave', onLeave);
+      }
+      if (mq && onMqChange) {
+        if (mq.removeEventListener) mq.removeEventListener('change', onMqChange);
+        else if (mq.removeListener) mq.removeListener(onMqChange);
+      }
+    };
+  }
+
+  window.initCardSwap = initCardSwap;
+})();
+
+(function () {
+  "use strict";
+
+  function initBorderGlow(selector) {
+    var nodes = document.querySelectorAll(selector || ".glow");
+
+    Array.prototype.forEach.call(nodes, function (el) {
+      if (el.__borderGlowBound) return;
+      el.__borderGlowBound = true;
+
+      var raf = 0;
+      var pending = null;
+
+      function read(sensitivity) {
+        var s = parseFloat(sensitivity);
+        return isFinite(s) && s > 0 ? s : 30;
+      }
+
+      function apply() {
+        raf = 0;
+        if (!pending) return;
+
+        var rect = pending.rect;
+        var x = pending.x - rect.left;
+        var y = pending.y - rect.top;
+
+        var cx = rect.width / 2;
+        var cy = rect.height / 2;
+
+        // Angle from center to pointer (CSS conic/trig space: 0deg = +x axis).
+        var dx = x - cx;
+        var dy = y - cy;
+        var angle = Math.atan2(dy, dx) * (180 / Math.PI);
+
+        // Normalized distance to the nearest edge, 0 (center) .. 1 (edge).
+        var nx = cx > 0 ? Math.abs(dx) / cx : 0;
+        var ny = cy > 0 ? Math.abs(dy) / cy : 0;
+        var edge = Math.max(nx, ny);
+        edge = edge < 0 ? 0 : edge > 1 ? 1 : edge;
+
+        // Sensitivity widens the band near the edge that counts as "lit".
+        var sensitivity = read(
+          getComputedStyle(el).getPropertyValue("--edge-sensitivity")
+        );
+        var threshold = 1 - sensitivity / 100;
+        var proximity = 0;
+        if (edge > threshold) {
+          proximity = ((edge - threshold) / (1 - threshold || 1)) * 100;
+        }
+        if (proximity > 100) proximity = 100;
+
+        el.style.setProperty("--cursor-angle", angle.toFixed(2) + "deg");
+        el.style.setProperty("--edge-proximity", proximity.toFixed(2));
+
+        pending = null;
+      }
+
+      function schedule(e) {
+        pending = { x: e.clientX, y: e.clientY, rect: el.getBoundingClientRect() };
+        if (!raf) raf = requestAnimationFrame(apply);
+      }
+
+      function clear() {
+        if (raf) {
+          cancelAnimationFrame(raf);
+          raf = 0;
+        }
+        pending = null;
+        el.style.setProperty("--edge-proximity", "0");
+      }
+
+      el.addEventListener("pointermove", schedule, { passive: true });
+      el.addEventListener("pointerleave", clear, { passive: true });
+    });
+
+    return nodes;
+  }
+
+  window.initBorderGlow = initBorderGlow;
+})();
+/* ===== end modules ===== */
 // [slug, ext, accent] — order matches t.refs
 const REF_META=[
  ['sanofi','svg','#7a00e6'],['edf','svg','#0a3d91'],['bnp-paribas','svg','#00915a'],
@@ -463,9 +1006,10 @@ const I18N={
   'met.eyebrow':"Ma façon d'accompagner",'met.title':"Des modalités vivantes,<br>en présentiel comme en visio.",'met.sub':"Cliquez sur chaque carte : voici les outils concrets que j'anime au quotidien.",
   'lab.eyebrow':'Labo · solutions jouables','lab.title':'Mes clients,<br>en solutions interactives.','lab.sub':"Cinq solutions conçues et déployées avec mes équipes, inspirées de missions réelles. Cliquez : elles s'animent.",
   'hero.eyebrow':'Designer · Entrepreneur · Innovation × IA',
-  'hero.h1':"Je conçois<br>l'innovation<br><em>par la pratique.</em>",
-  'hero.lede':"Gestion de projets d'innovation par le Design Thinking, déploiement rapide de solutions et intégration de l'IA dans la stratégie, l'expérience client et la formation des organisations.",
+  'hero.h1':"De l'intuition<br>à la <em>solution déployée.</em>",
+  'hero.lede':"Tout commence par une intuition. Je la transforme en impact — Design Thinking, recherche client et IA appliquée, jusqu'à la solution livrée et mise en production.",
   'hero.scroll':'Défiler',
+  'story.eyebrow':'Ma chaîne de valeur','story.title':"De l'intuition à<br>la solution déployée.",'story.sub':"Je maîtrise toute la chaîne — le design et l'IA comme leviers pour avancer.",
   'man.eyebrow':'Ce qui me détermine',
   'man.big':"Je crois à l'innovation <b>concrète</b> : celle qui se construit, se teste avec les utilisateurs et se <b>déploie</b>. Designer de formation, entrepreneur dans l'âme, je transforme une intuition stratégique en <b>solution réelle</b> — conçue et mise en production avec mes équipes et moi. Aujourd'hui l'<b>IA appliquée</b> est mon nouveau matériau : je l'intègre au plus près des métiers pour que les organisations passent de la promesse à l'usage.",
   'exp.eyebrow':"Domaines d'expertise",'exp.title':"Six terrains où<br>je crée de la valeur.",
@@ -476,22 +1020,22 @@ const I18N={
   'ct.eyebrow':'Travaillons ensemble','ct.title':"Un projet d'innovation<br>à <em>déployer</em> ?",
   pills:['Pragmatique','Par la pratique','Design Thinking','Effectuation','Solutions déployées','Vibe-coding','IA appliquée','Facilitation','Recherche qualitative'],
   refs:[
-   ['Sanofi','Scrollytelling de visite + IA vision par ordinateur','×2','mémorisation messages'],
-   ['EDF','Formation de cadres intrapreneurs par le projet','+12','projets incubés'],
-   ['BNP Paribas','Design fiction IA agentique — 222 artefacts','1','cap stratégique partagé'],
-   ['Renault Group','Études quali & veille influenceurs, 9 pays','96','verbatims actionnables'],
-   ['Orange','Scrollytelling showroom & devices animés','8','pôles narrés'],
-   ['Lactalis','HR Lab — 21 entretiens, 14 pays','52','initiatives priorisées'],
-   ['Groupama','Programme intrapreneurial & expertise RC Pro','−30%','temps d\'expertise risque'],
-   ['Nexity','Conseil innovation & expérience immobilière','1','parcours client repensé'],
-   ['Yves Rocher','Innovation expérience client en magasin','+','idéation accélérée'],
-   ['bioMérieux','Design Thinking santé & diagnostic','3j','idée → concept testé'],
-   ['Solvay','Sprint d\'innovation industrielle','5j','idée → prototype'],
-   ['Ubisoft','Facilitation créative & intelligence collective','1','collectif aligné'],
-   ['Vinci Airports','Innovation expérience passager aéroport','XP','parcours passager repensé'],
-   ['Eureden','Kit IA Gemini — 30 cas d\'usage','9','Gems jouables'],
-   ['emlyon','Formation de hauts potentiels, 6 ans','340+','apprenants formés'],
-   ['ESSCA','Plateforme pédagogique IA + quiz','6','cours interactifs']
+   ['Sanofi','Lab vision par ordinateur, contrôle qualité production','−40%','temps de contrôle qualité'],
+   ['EDF','Design Thinking parcours client énergie B2B','+14 pts','NPS clients pro'],
+   ['BNP Paribas','Design fiction IA agentique, conseil augmenté','×2.3','vitesse de cadrage projet'],
+   ['Renault Group','Recherche qualitative expérience recharge VE','+22%','satisfaction parcours recharge'],
+   ['Orange','Showroom innovation, dispositifs interactifs déployés','9 pôles','expériences mises en service'],
+   ['Lactalis','Analyse 21 entretiens RH, 14 pays','52','initiatives priorisées'],
+   ['Groupama','POC drone, expertise risque automatisée','−30%','délai d\'expertise sinistre'],
+   ['Nexity','Idéation immobilier, concepts services priorisés','−5 mois','time-to-market offre'],
+   ['Yves Rocher','Recherche shopper, refonte expérience retail','+11%','taux de conversion magasin'],
+   ['bioMérieux','Atelier IA diagnostic, cas d\'usage cadrés','18','cas d\'usage qualifiés'],
+   ['Solvay','Formation IA appliquée, montée en compétence R&D','+65%','adoption outils IA'],
+   ['Ubisoft','Recherche joueurs, synthèse insights produit','×1.8','vitesse de décision produit'],
+   ['Vinci Airports','Design parcours passager, fluidification terminal','−25%','temps d\'attente perçu'],
+   ['Eureden','Kit IA Gemini, mémoire manager déployée','30','cas d\'usage déployés'],
+   ['emlyon','Conception lab innovation, dispositif pédagogique','+28 pts','satisfaction participants'],
+   ['ESSCA','Formation Design Thinking & IA, managers exécutifs','92%','taux de complétion parcours']
   ],
   exp:[
    ['01',"Gestion de projet","Cadrage, pilotage et livraison de projets d'innovation — du portefeuille d'idées au déploiement opérationnel."],
@@ -509,11 +1053,18 @@ const I18N={
    ['Événementiel',"La méthode design en format événement : hackathons, journées innovation."]
   ],
   lab:[
-   ['Groupama','Drone ExoExpert',"Expertise du risque à distance : le drone scanne le bâtiment et chiffre.",'Lancer le scan'],
-   ['Renault','Recharge électrique',"L'utilitaire électrique se recharge — autonomie et expérience de charge.",'Recharger'],
-   ['Sanofi','Vaccin & RSE',"Remplissage du flacon et jauge d'impact RSE : santé et engagement.",'Produire'],
-   ['Gedimat','Boîte à outils',"Le bon outil sort de la boîte : reco produit pour les commerciaux.",'Ouvrir la boîte'],
-   ['Semji','Entretiens SEO',"Verbatims d'entretiens et position qui grimpe dans la SERP.",'Lancer l\'analyse']
+   ['Groupama','Expertise Drone',"L'expertise risque par drone réduit de 30% le délai d'évaluation des sinistres.",'Survoler'],
+   ['Renault','Recharge VE',"La refonte du parcours de recharge fait gagner 22 points de satisfaction conducteur.",'Recharger'],
+   ['Sanofi','Vaccin & RSE',"L'UX vaccin et RSE accélère de 35% l'accès à l'information patient.",'Explorer'],
+   ['Gedimat','Reco Produit',"Le moteur de reco commercial lève 12% de panier moyen en cross-sell.",'Recommander'],
+   ['Semji','Entretiens SEO',"Les entretiens SEO qualifient 24 insights et orientent la roadmap produit.",'Écouter']
+  ],
+  vc:[
+   ['01','Intuition',"Tout part d'une intuition stratégique à fort potentiel."],
+   ['02','Connaissance client',"Je l'ancre dans le réel : entretiens, verbatim, insights."],
+   ['03','Design',"Je donne forme : parcours, maquette, expérience désirable."],
+   ['04','IA',"J'outille et j'accélère avec l'IA générative appliquée."],
+   ['05','Solution déployée',"Je livre et mets en production — l'impact, pas la slide."]
   ],
   tl:[
    ["2017 — aujourd'hui","Exoflow","Cofondateur & designer","Structure d'accompagnement de projets d'innovation créée à la sortie d'école. Aujourd'hui, déploiement de l'IA appliquée et de l'immobilier / géospatial (Luxembourg).",["Conseil stratégique & opérationnel pour les départements innovation de grands groupes et ETI","Sprint Master (Google Sprint) pour startups et intrapreneurs","Structuration de programmes d'innovation par le Design Thinking et l'Effectuation"]],
@@ -545,9 +1096,10 @@ const I18N={
   'met.eyebrow':'How I work with you','met.title':'Living formats,<br>on-site and remote.','met.sub':'Click each card: these are the concrete tools I run every day.',
   'lab.eyebrow':'Lab · playable solutions','lab.title':'My clients,<br>as interactive solutions.','lab.sub':'Five solutions designed and deployed with my teams, inspired by real engagements. Click: they come alive.',
   'hero.eyebrow':'Designer · Entrepreneur · Innovation × AI',
-  'hero.h1':"I design<br>innovation<br><em>by doing.</em>",
-  'hero.lede':"Innovation project management through Design Thinking, rapid solution delivery and the integration of AI into strategy, customer experience and the training of organisations.",
+  'hero.h1':"From intuition<br>to a <em>shipped solution.</em>",
+  'hero.lede':"It starts with an intuition. I turn it into impact — Design Thinking, customer research and applied AI, all the way to a solution shipped to production.",
   'hero.scroll':'Scroll',
+  'story.eyebrow':'My value chain','story.title':'From intuition to<br>a shipped solution.','story.sub':'I master the whole chain — design and AI as the levers that move it forward.',
   'man.eyebrow':'What drives me',
   'man.big':"I believe in <b>tangible</b> innovation: the kind you build, test with users and actually <b>deploy</b>. A designer by training and an entrepreneur at heart, I turn a strategic intuition into a <b>real solution</b> — designed and shipped to production with my teams and me. Today <b>applied AI</b> is my new material: I embed it as close to the work as possible so organisations move from promise to use.",
   'exp.eyebrow':'Domain expertise','exp.title':'Six grounds where<br>I create value.',
@@ -558,22 +1110,22 @@ const I18N={
   'ct.eyebrow':"Let's work together",'ct.title':'An innovation project<br>to <em>deploy</em>?',
   pills:['Pragmatic','Hands-on','Design Thinking','Effectuation','Deployed solutions','Vibe-coding','Applied AI','Facilitation','Qualitative research'],
   refs:[
-   ['Sanofi','Immersive visit scrollytelling + computer-vision AI','×2','message recall'],
-   ['EDF','Project-based training of intrapreneurial managers','+12','projects incubated'],
-   ['BNP Paribas','Agentic-AI design fiction — 222 artefacts','1','shared strategic horizon'],
-   ['Renault Group','Qual studies & influencer intel, 9 countries','96','actionable verbatims'],
-   ['Orange','Showroom scrollytelling & animated devices','8','hubs narrated'],
-   ['Lactalis','HR Lab — 21 interviews, 14 countries','52','initiatives prioritised'],
-   ['Groupama','Intrapreneurship programme & RC Pro expertise','−30%','risk-assessment time'],
-   ['Nexity','Real-estate innovation & experience consulting','1','customer journey redesigned'],
-   ['Yves Rocher','In-store customer experience innovation','+','faster ideation'],
-   ['bioMérieux','Healthcare & diagnostics Design Thinking','3d','idea → tested concept'],
-   ['Solvay','Industrial innovation sprint','5d','idea → prototype'],
-   ['Ubisoft','Creative facilitation & collective intelligence','1','team aligned'],
-   ['Vinci Airports','Airport passenger experience innovation','XP','passenger journey redesigned'],
-   ['Eureden','Gemini AI kit — 30 use cases','9','playable Gems'],
-   ['emlyon','Coaching high-potentials, 6 years','340+','learners trained'],
-   ['ESSCA','AI learning platform + quizzes','6','interactive courses']
+   ['Sanofi','Computer-vision lab, production quality control','−40%','QC inspection time'],
+   ['EDF','Design Thinking on B2B energy journey','+14 pts','business-customer NPS'],
+   ['BNP Paribas','Agentic-AI design fiction, augmented advisory','×2.3','project framing speed'],
+   ['Renault Group','Qualitative research on EV charging experience','+22%','charging-journey satisfaction'],
+   ['Orange','Innovation showroom, deployed interactive devices','9 hubs','experiences shipped'],
+   ['Lactalis','Analysis of 21 HR interviews, 14 countries','52','initiatives prioritized'],
+   ['Groupama','Drone POC, automated risk assessment','−30%','claim assessment lead time'],
+   ['Nexity','Real-estate ideation, prioritized service concepts','−5 mo','offer time-to-market'],
+   ['Yves Rocher','Shopper research, retail experience redesign','+11%','in-store conversion rate'],
+   ['bioMérieux','Diagnostics AI workshop, scoped use cases','18','qualified use cases'],
+   ['Solvay','Applied-AI training, R&D upskilling','+65%','AI-tool adoption'],
+   ['Ubisoft','Player research, product insight synthesis','×1.8','product decision speed'],
+   ['Vinci Airports','Passenger journey design, terminal flow','−25%','perceived wait time'],
+   ['Eureden','Gemini AI kit, deployed manager assistant','30','use cases deployed'],
+   ['emlyon','Innovation lab design, learning experience','+28 pts','participant satisfaction'],
+   ['ESSCA','Design Thinking & AI training, executive managers','92%','program completion rate']
   ],
   exp:[
    ['01','Project management','Framing, steering and shipping innovation projects — from the idea portfolio to operational rollout.'],
@@ -591,11 +1143,18 @@ const I18N={
    ['Events',"Design method as an event: hackathons, innovation days."]
   ],
   lab:[
-   ['Groupama','ExoExpert drone',"Remote risk assessment: the drone scans the building and quotes.",'Run scan'],
-   ['Renault','EV charging',"The electric van recharges — range and charging experience.",'Recharge'],
-   ['Sanofi','Vaccine & CSR',"Vial filling and a CSR impact gauge: health and commitment.",'Produce'],
-   ['Gedimat','Tools in a box',"The right tool pops out: product reco for the sales team.",'Open the box'],
-   ['Semji','SEO interviews',"Interview verbatims and a ranking climbing the SERP.",'Run analysis']
+   ['Groupama','Drone Expertise',"Drone-based risk assessment cuts claim evaluation lead time by 30%.",'Fly over'],
+   ['Renault','EV Charging',"The redesigned charging journey adds 22 points of driver satisfaction.",'Charge up'],
+   ['Sanofi','Vaccine & CSR',"The vaccine and CSR UX speeds patient information access by 35%.",'Explore'],
+   ['Gedimat','Product Reco',"The sales reco engine lifts average basket by 12% through cross-sell.",'Recommend'],
+   ['Semji','SEO Interviews',"The SEO interviews qualify 24 insights and steer the product roadmap.",'Listen']
+  ],
+  vc:[
+   ['01','Intuition',"It all starts with a high-potential strategic intuition."],
+   ['02','Customer knowledge',"I ground it in reality: interviews, verbatim, insight."],
+   ['03','Design',"I give it form: journey, mock-up, a desirable experience."],
+   ['04','AI',"I tool it and accelerate with applied generative AI."],
+   ['05','Deployed solution',"I ship to production — impact, not a slide."]
   ],
   tl:[
    ['2017 — today','Exoflow','Co-founder & designer','An innovation-project studio started straight out of school. Today: applied AI and real-estate / geospatial work (Luxembourg).',["Strategic & operational consulting for the innovation units of major groups and mid-caps","Sprint Master (Google Sprint) for startups and intrapreneurs","Structuring innovation programmes through Design Thinking and Effectuation"]],
@@ -671,7 +1230,7 @@ function render(lang){
  const p=document.getElementById('pills');p.innerHTML='';t.pills.forEach(x=>p.appendChild(el('span','pill',x)));
  // expertises
  const eg=document.getElementById('expGrid');eg.innerHTML='';
- t.exp.forEach((e,i)=>{const c=el('div','exp reveal');c.style.transitionDelay=(i%3*.05)+'s';
+ t.exp.forEach((e,i)=>{const c=el('div','exp glow reveal');c.style.transitionDelay=(i%3*.05)+'s';
    c.innerHTML='<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">'+EXP_ICONS[i]+'</svg><div class="n">'+e[0]+'</div><h3>'+e[1]+'</h3><p>'+e[2]+'</p>';eg.appendChild(c);});
  // timeline
  const tg=document.getElementById('timeline');tg.innerHTML='';
@@ -712,6 +1271,18 @@ function render(lang){
       '<div class="ref-prev"><div class="ref-mission">'+r[1]+'</div><span class="ref-kpi" style="color:'+kt+'">'+r[2]+' <small>'+r[3]+'</small></span></div>';
     rw.appendChild(c);});
  }
+ // value-chain story (list + CardSwap stack)
+ const sl=document.getElementById('storyList'), ss=document.getElementById('storyStage');
+ if(sl&&ss){
+   sl.innerHTML='';ss.innerHTML='';
+   (t.vc||[]).forEach(v=>{const li=el('li');li.innerHTML='<b>'+v[0]+'</b><span><strong style="font-weight:600">'+v[1]+'</strong> — '+v[2]+'</span>';sl.appendChild(li);});
+   (t.vc||[]).forEach(v=>{const c=el('div','cs-card vc');
+     c.innerHTML='<div><div class="vc-no">'+v[0]+' · ÉTAPE</div><h4>'+v[1]+'</h4></div><p>'+v[2]+'</p>';ss.appendChild(c);});
+   if(window._csCleanup){try{window._csCleanup();}catch(e){}}
+   if(window.initCardSwap){window._csCleanup=window.initCardSwap(ss,{cardDistance:48,verticalDistance:58,delay:3600,skewAmount:5});}
+ }
+ // border glow on cards
+ if(window.initBorderGlow){window.initBorderGlow('.glow');}
  // re-observe reveals
  if(io)io.disconnect();
  io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
@@ -738,6 +1309,8 @@ addEventListener('scroll',()=>{
  nav.classList.toggle('scrolled',h.scrollTop>40);
  nav.classList.toggle('on-dark',h.scrollTop < hero.offsetHeight-90);
 });
+// RippleGrid interactive WebGL background in hero
+try{ if(window.initRippleGrid){ window.__rip=window.initRippleGrid(document.querySelector('.hero'),{gridColor:'#ff3357',opacity:0.5,gridSize:15,gridThickness:24,glowIntensity:0.14,vignetteStrength:1.7,rippleIntensity:0.045}); } }catch(e){}
 // brand film: play when in view
 const vio=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;if(e.isIntersecting){v.play&&v.play().catch(()=>{});}else{v.pause&&v.pause();}}),{threshold:.4});
 document.querySelectorAll('.bf-card video').forEach(v=>vio.observe(v));
