@@ -85,8 +85,15 @@ section{padding:118px 0;position:relative}
 .exp:hover{transform:translateY(-6px);border-color:rgba(255,51,92,.45);box-shadow:0 24px 48px -28px rgba(11,10,16,.5)}
 .exp .ic{width:46px;height:46px;margin-bottom:18px;color:var(--red-d)}
 .exp .n{font-family:var(--mono);font-size:.7rem;color:rgba(28,27,34,.42);letter-spacing:.16em}
-.exp h3{font-size:1.3rem;margin:8px 0 10px}
-.exp p{font-size:.95rem;color:rgba(28,27,34,.72)}
+.exp h3{font-size:1.25rem;margin:6px 0 9px}
+.exp p{font-size:.92rem;color:rgba(28,27,34,.72)}
+.exp-screen{border-radius:12px;overflow:hidden;border:1px solid rgba(28,27,34,.14);margin-bottom:18px;background:#13111B;box-shadow:0 12px 30px -22px rgba(11,10,16,.7)}
+.es-bar{display:flex;align-items:center;gap:6px;padding:8px 11px;background:#1a1722;border-bottom:1px solid rgba(255,255,255,.06)}
+.es-bar i{width:8px;height:8px;border-radius:50%;background:#3a3550}
+.es-bar i:first-child{background:#ff5f57}.es-bar i:nth-child(2){background:#febc2e}.es-bar i:nth-child(3){background:#28c840}
+.es-bar span{margin-left:8px;font-family:var(--mono);font-size:.58rem;letter-spacing:.08em;color:rgba(247,245,242,.42)}
+.es-view{position:relative;aspect-ratio:200/116;background:radial-gradient(120% 120% at 50% 0,rgba(76,123,245,.07),transparent 60%),#13111B}
+.es-view svg{position:absolute;inset:0;width:100%;height:100%}
 
 /* TIMELINE */
 .timeline{margin-top:20px}
@@ -222,7 +229,25 @@ footer{background:var(--ink);color:rgba(249,249,249,.4);font-family:var(--mono);
 .ref.h1:hover{transform:translateY(-8px) rotate(-1.4deg)}
 .ref.h2:hover{transform:translateY(-8px) rotate(1.4deg)}
 .ref.h3:hover{transform:translateY(-10px) scale(1.02)}
-.refs-foot{margin-top:22px;font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;color:rgba(52,51,51,.5)}
+.refs-foot{margin-top:22px;font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;color:rgba(28,27,34,.5)}
+
+/* TESTIMONIALS */
+.testi{background:var(--paper)}
+.testi-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:46px;flex-wrap:wrap}
+.testi-head h2{font-size:clamp(2rem,5vw,3.4rem);margin-top:12px}
+.testi-score{text-align:right;line-height:1}
+.testi-score .ts-n{font-family:var(--serif);font-size:clamp(2.6rem,6vw,3.8rem);font-weight:600;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.testi-score .ts-l{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;color:rgba(28,27,34,.55);text-transform:uppercase;margin-top:6px}
+.testi-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+@media(max-width:760px){.testi-grid{grid-template-columns:1fr}}
+.tcard{position:relative;background:var(--white);border:1px solid var(--line);border-radius:18px;padding:30px 28px 26px;transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s,border-color .4s}
+.tcard:hover{transform:translateY(-5px);border-color:rgba(255,51,92,.4);box-shadow:0 26px 50px -30px rgba(11,10,16,.5)}
+.tcard .q{font-size:1.06rem;line-height:1.5;color:var(--ink-2);font-weight:450}
+.tcard .q::before{content:"“";font-family:var(--serif);font-size:2.4rem;line-height:0;color:var(--red);margin-right:4px;vertical-align:-.35em}
+.tcard .who{margin-top:18px;display:flex;align-items:center;gap:12px}
+.tcard .av{width:38px;height:38px;border-radius:50%;background:var(--grad);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.78rem;font-weight:700;flex-shrink:0}
+.tcard .nm{font-weight:600;font-size:.92rem}
+.tcard .og{font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;color:rgba(28,27,34,.5);text-transform:uppercase}
 
 /* LAB mini-window chrome */
 .lab-win{display:flex;align-items:center;gap:6px;padding:9px 12px;background:#161615;border-bottom:1px solid rgba(249,249,249,.08)}
@@ -306,6 +331,38 @@ footer{background:var(--ink);color:rgba(249,249,249,.4);font-family:var(--mono);
 .story-list li:hover{color:var(--paper);padding-left:8px}
 .story-list li b{font-family:var(--mono);font-size:.74rem;color:var(--red-l);min-width:30px}
 
+/* ===== expertise mini-screen scene animations ===== */
+.es{opacity:0}
+.es.b1{animation:esB1 6.6s ease-in-out infinite}
+.es.b2{animation:esB2 6.6s ease-in-out infinite}
+.es.b3{animation:esB3 6.6s ease-in-out infinite}
+@keyframes esB1{0%{opacity:0}4%,26%{opacity:1}33%,100%{opacity:0}}
+@keyframes esB2{0%,33%{opacity:0}38%,59%{opacity:1}66%,100%{opacity:0}}
+@keyframes esB3{0%,66%{opacity:0}71%,94%{opacity:1}100%{opacity:0}}
+.es-fly{animation:esFly 6.6s ease-in-out infinite}
+@keyframes esFly{0%,4%{transform:translate(0,0);opacity:0}10%{opacity:1}24%{transform:translate(-90px,30px);opacity:1}30%,100%{opacity:0}}
+.es-c1{opacity:0;animation:esIn 6.6s ease-out infinite}
+.es-c2{opacity:0;animation:esIn 6.6s ease-out infinite;animation-delay:.9s}
+@keyframes esIn{0%{opacity:0;transform:translateY(10px)}10%,70%{opacity:1;transform:none}82%,100%{opacity:0}}
+.es-spark{transform-origin:168px 42px;animation:esSpark 3.2s ease-in-out infinite}
+@keyframes esSpark{0%,100%{transform:scale(.7) rotate(0);opacity:.5}50%{transform:scale(1) rotate(45deg);opacity:1}}
+.es-dot{animation:esDot 1.4s ease-in-out infinite}.es-dot.d2{animation-delay:.18s}.es-dot.d3{animation-delay:.36s}
+@keyframes esDot{0%,100%{opacity:.3;transform:translateY(0)}50%{opacity:1;transform:translateY(-3px)}}
+.es-hi{animation:esHi 4s ease-in-out infinite}
+@keyframes esHi{0%{transform:translateY(0);opacity:.25}33%{transform:translateY(16px);opacity:.3}66%{transform:translateY(32px);opacity:.25}100%{transform:translateY(0);opacity:.25}}
+.es-cur1{animation:esCur1 5s ease-in-out infinite}.es-cur2{animation:esCur2 5s ease-in-out infinite}
+@keyframes esCur1{0%,100%{transform:translate(0,0)}25%{transform:translate(-40px,18px)}55%{transform:translate(-66px,-6px)}}
+@keyframes esCur2{0%,100%{transform:translate(0,0)}30%{transform:translate(28px,-30px)}60%{transform:translate(48px,4px)}}
+.es-dd{stroke-dasharray:180;stroke-dashoffset:180;animation:esDraw 4.4s ease-in-out infinite}
+.es-dd.d2{animation-delay:.7s}
+@keyframes esDraw{0%{stroke-dashoffset:180}45%,70%{stroke-dashoffset:0}100%{stroke-dashoffset:0;opacity:.9}}
+.es-bulb{transform-origin:100px 58px;animation:esBulb 4.4s ease-in-out infinite}
+@keyframes esBulb{0%,60%{opacity:0;transform:scale(.4)}75%{opacity:1;transform:scale(1.15)}85%,100%{opacity:1;transform:scale(1)}}
+.es-radar{animation:esSpin 4s linear infinite}
+@keyframes esSpin{to{transform:rotate(360deg)}}
+.es-sig{animation:esSig 2.4s ease-in-out infinite}.es-sig.d2{animation-delay:.8s}.es-sig.d3{animation-delay:1.5s}
+@keyframes esSig{0%,100%{opacity:.15;transform:scale(.6)}50%{opacity:1;transform:scale(1.25)}}
+
 @media(prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;transition-duration:.01ms!important}}
 </style>
 </head>
@@ -381,6 +438,21 @@ footer{background:var(--ink);color:rgba(249,249,249,.4);font-family:var(--mono);
     </div>
     <div class="refs-wall reveal" id="refsWall"></div>
     <p class="refs-foot reveal" data-i="cli.foot">Indicateurs d'impact simulés à partir de missions réelles.</p>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="testi">
+  <div class="wrap">
+    <div class="testi-head">
+      <div>
+        <p class="eyebrow reveal" data-i="testi.eyebrow">La voix des participants</p>
+        <h2 class="reveal" data-i="testi.title">Ce qu'ils en disent.</h2>
+      </div>
+      <div class="testi-score reveal" id="testiScore"></div>
+    </div>
+    <div class="testi-grid reveal" id="testiGrid"></div>
+    <p class="refs-foot reveal" data-i="testi.foot"></p>
   </div>
 </section>
 
@@ -1010,6 +1082,7 @@ const I18N={
   'hero.lede':"Tout commence par une intuition. Je la transforme en impact — Design Thinking, recherche client et IA appliquée, jusqu'à la solution livrée et mise en production.",
   'hero.scroll':'Défiler',
   'story.eyebrow':'Ma chaîne de valeur','story.title':"De l'intuition à<br>la solution déployée.",'story.sub':"Je maîtrise toute la chaîne — le design et l'IA comme leviers pour avancer.",
+  'testi.eyebrow':'La voix des participants','testi.title':"Ce qu'ils en disent.",'testi.foot':"Verbatims issus du questionnaire de satisfaction — Formation Design Thinking, emlyon (2025).",
   'man.eyebrow':'Ce qui me détermine',
   'man.big':"Je crois à l'innovation <b>concrète</b> : celle qui se construit, se teste avec les utilisateurs et se <b>déploie</b>. Designer de formation, entrepreneur dans l'âme, je transforme une intuition stratégique en <b>solution réelle</b> — conçue et mise en production avec mes équipes et moi. Aujourd'hui l'<b>IA appliquée</b> est mon nouveau matériau : je l'intègre au plus près des métiers pour que les organisations passent de la promesse à l'usage.",
   'exp.eyebrow':"Domaines d'expertise",'exp.title':"Six terrains où<br>je crée de la valeur.",
@@ -1066,6 +1139,13 @@ const I18N={
    ['04','IA',"J'outille et j'accélère avec l'IA générative appliquée."],
    ['05','Solution déployée',"Je livre et mets en production — l'impact, pas la slide."]
   ],
+  tstat:['4,6/5','satisfaction · 17 répondants'],
+  testi:[
+   ["La méthode Design Thinking pour la conduite d'un projet est très intéressante et particulièrement complète. Merci Victor, c'était top !",'Marie-Laure F.','emlyon'],
+   ["Un format mêlant théorie, pratique et échanges sous forme d'ateliers ludiques, qui favorise la coopération et fait émerger des solutions.",'Axelle S.','emlyon'],
+   ["Je réutilise facilement la méthode de Design Thinking — surtout les outils d'idéation, que j'ai vraiment appréciés.",'Mathilde C.','emlyon'],
+   ["Les outils IA, pratiques et faciles à manipuler.",'Mihaela B.','emlyon']
+  ],
   tl:[
    ["2017 — aujourd'hui","Exoflow","Cofondateur & designer","Structure d'accompagnement de projets d'innovation créée à la sortie d'école. Aujourd'hui, déploiement de l'IA appliquée et de l'immobilier / géospatial (Luxembourg).",["Conseil stratégique & opérationnel pour les départements innovation de grands groupes et ETI","Sprint Master (Google Sprint) pour startups et intrapreneurs","Structuration de programmes d'innovation par le Design Thinking et l'Effectuation"]],
    ["2022 — aujourd'hui","Acmé","Manager & associé · institut d'étude qualitative","Études qualitatives ancrées terrain : entretiens, analyse verbatim et restitution stratégique pour les marques.",[]],
@@ -1100,6 +1180,7 @@ const I18N={
   'hero.lede':"It starts with an intuition. I turn it into impact — Design Thinking, customer research and applied AI, all the way to a solution shipped to production.",
   'hero.scroll':'Scroll',
   'story.eyebrow':'My value chain','story.title':'From intuition to<br>a shipped solution.','story.sub':'I master the whole chain — design and AI as the levers that move it forward.',
+  'testi.eyebrow':'In their words','testi.title':'What participants say.','testi.foot':'Verbatims from the satisfaction survey — Design Thinking training, emlyon (2025).',
   'man.eyebrow':'What drives me',
   'man.big':"I believe in <b>tangible</b> innovation: the kind you build, test with users and actually <b>deploy</b>. A designer by training and an entrepreneur at heart, I turn a strategic intuition into a <b>real solution</b> — designed and shipped to production with my teams and me. Today <b>applied AI</b> is my new material: I embed it as close to the work as possible so organisations move from promise to use.",
   'exp.eyebrow':'Domain expertise','exp.title':'Six grounds where<br>I create value.',
@@ -1156,6 +1237,13 @@ const I18N={
    ['04','AI',"I tool it and accelerate with applied generative AI."],
    ['05','Deployed solution',"I ship to production — impact, not a slide."]
   ],
+  tstat:['4.6/5','satisfaction · 17 respondents'],
+  testi:[
+   ["The Design Thinking method for running a project is genuinely valuable and remarkably complete. Thank you Victor — it was great!",'Marie-Laure F.','emlyon'],
+   ["A format blending theory, practice and exchange through playful workshops, fostering cooperation and surfacing real solutions.",'Axelle S.','emlyon'],
+   ["I easily reuse the Design Thinking method — especially the ideation tools, which I really appreciated.",'Mathilde C.','emlyon'],
+   ["The AI tools — practical and easy to handle.",'Mihaela B.','emlyon']
+  ],
   tl:[
    ['2017 — today','Exoflow','Co-founder & designer','An innovation-project studio started straight out of school. Today: applied AI and real-estate / geospatial work (Luxembourg).',["Strategic & operational consulting for the innovation units of major groups and mid-caps","Sprint Master (Google Sprint) for startups and intrapreneurs","Structuring innovation programmes through Design Thinking and Effectuation"]],
    ['2022 — today','Acmé','Manager & partner · qualitative research institute','Field-grounded qualitative studies: interviews, verbatim analysis and strategic readouts for brands.',[]],
@@ -1182,13 +1270,41 @@ const I18N={
 };
 
 function el(tag,cls,html){const e=document.createElement(tag);if(cls)e.className=cls;if(html!=null)e.innerHTML=html;return e;}
-const EXP_ICONS=[
- '<path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/>',
- '<circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18"/><path d="M12 8v8M8 12h8"/>',
- '<circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><circle cx="18" cy="6" r="3"/><path d="M9 6h6M6 9v6a3 3 0 0 0 3 3h6"/>',
- '<path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 7v6l9 4 9-4V7"/>',
- '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18M8 14h8"/>',
- '<rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 9h6v6H9z"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/>'
+// expertise mini-screens: [windowLabel, animated scene] — content area viewBox 200x116
+const EXP_SCREENS=[
+ ['projet · flow',`<svg viewBox="0 0 200 116" preserveAspectRatio="xMidYMid meet">
+   <g class="es b1"><rect x="60" y="40" width="80" height="46" rx="5" fill="#1f1c2a" stroke="#4C7BF5"/><path d="M60 46 L100 70 L140 46" fill="none" stroke="#4C7BF5" stroke-width="2"/><path class="es-fly" d="M150 26 l16 -7 -5 16z" fill="#FF335C"/><text x="100" y="104" fill="#8a8598" font-family="monospace" font-size="9" text-anchor="middle">envoyé →</text></g>
+   <g class="es b2"><rect x="40" y="42" width="32" height="32" rx="3" fill="#ffe27a" transform="rotate(-6 56 58)"/><rect x="84" y="38" width="32" height="32" rx="3" fill="#ff9db0" transform="rotate(4 100 54)"/><rect x="128" y="44" width="32" height="32" rx="3" fill="#9fc1ff" transform="rotate(-2 144 60)"/></g>
+   <g class="es b3"><rect x="66" y="32" width="68" height="52" rx="5" fill="#15131d" stroke="#FF335C"/><rect x="74" y="40" width="38" height="6" rx="3" fill="#3a3550"/><rect x="74" y="52" width="52" height="6" rx="3" fill="#3a3550"/><circle cx="118" cy="74" r="8" fill="#FF335C"/><path d="M115 70 l7 4 -7 4z" fill="#fff"/></g>
+ </svg>`],
+ ['gemini · chat',`<svg viewBox="0 0 200 116" preserveAspectRatio="xMidYMid meet">
+   <g class="es-c1"><rect x="20" y="24" width="98" height="24" rx="12" fill="#1f1c2a" stroke="#3a3550"/><rect x="32" y="31" width="44" height="3.5" rx="1.7" fill="#6f6a85"/><rect x="32" y="39" width="62" height="3.5" rx="1.7" fill="#6f6a85"/></g>
+   <g class="es-c2"><rect x="82" y="56" width="98" height="24" rx="12" fill="#2a1822" stroke="#FF335C"/><rect x="94" y="63" width="56" height="3.5" rx="1.7" fill="#ff9db0"/><rect x="94" y="71" width="40" height="3.5" rx="1.7" fill="#ff9db0"/></g>
+   <path class="es-spark" d="M168 26 C170 34 176 40 184 42 C176 44 170 50 168 58 C166 50 160 44 152 42 C160 40 166 34 168 26Z" fill="#4C7BF5"/>
+   <g transform="translate(34,96)"><circle class="es-dot" cx="0" cy="0" r="3.2" fill="#6f6a85"/><circle class="es-dot d2" cx="11" cy="0" r="3.2" fill="#6f6a85"/><circle class="es-dot d3" cx="22" cy="0" r="3.2" fill="#6f6a85"/></g>
+ </svg>`],
+ ['insights · client',`<svg viewBox="0 0 200 116" preserveAspectRatio="xMidYMid meet">
+   <circle cx="42" cy="46" r="18" fill="#1f1c2a" stroke="#4C7BF5"/><circle cx="42" cy="40" r="6" fill="#4C7BF5"/><path d="M30 58 a12 9 0 0 1 24 0z" fill="#4C7BF5"/>
+   <rect x="76" y="30" width="96" height="6" rx="3" fill="#3a3550"/><rect x="76" y="46" width="76" height="6" rx="3" fill="#3a3550"/><rect x="76" y="62" width="88" height="6" rx="3" fill="#3a3550"/>
+   <rect class="es-hi" x="72" y="26" width="104" height="13" rx="3" fill="#FF335C" opacity=".25"/>
+   <text x="42" y="86" fill="#8a8598" font-family="monospace" font-size="8" text-anchor="middle">persona</text>
+ </svg>`],
+ ['board · live',`<svg viewBox="0 0 200 116" preserveAspectRatio="xMidYMid meet">
+   <rect x="34" y="24" width="30" height="30" rx="3" fill="#ffe27a"/><rect x="70" y="28" width="30" height="30" rx="3" fill="#ff9db0"/><rect x="52" y="60" width="30" height="30" rx="3" fill="#9fc1ff"/>
+   <g class="es-cur1"><path d="M150 38 l0 17 4.5 -5 4 8 3.5 -2 -4 -7 6.5 0z" fill="#FF335C"/><rect x="158" y="32" width="28" height="11" rx="5" fill="#FF335C"/></g>
+   <g class="es-cur2"><path d="M116 78 l0 17 4.5 -5 4 8 3.5 -2 -4 -7 6.5 0z" fill="#4C7BF5"/><rect x="124" y="72" width="28" height="11" rx="5" fill="#4C7BF5"/></g>
+ </svg>`],
+ ['double diamond',`<svg viewBox="0 0 200 116" preserveAspectRatio="xMidYMid meet">
+   <path class="es-dd" d="M22 58 L66 30 L110 58 L66 86 Z" fill="none" stroke="#4C7BF5" stroke-width="2.2"/>
+   <path class="es-dd d2" d="M90 58 L134 30 L178 58 L134 86 Z" fill="none" stroke="#FF335C" stroke-width="2.2"/>
+   <g class="es-bulb"><circle cx="100" cy="58" r="9" fill="#FF335C"/><path d="M100 50 v16 M92 58 h16" stroke="#fff" stroke-width="2"/></g>
+ </svg>`],
+ ['2030 · signal',`<svg viewBox="0 0 200 116" preserveAspectRatio="xMidYMid meet">
+   <circle cx="100" cy="58" r="44" fill="none" stroke="#2c2838"/><circle cx="100" cy="58" r="27" fill="none" stroke="#2c2838"/><circle cx="100" cy="58" r="3" fill="#4C7BF5"/>
+   <g class="es-radar" style="transform-origin:100px 58px"><path d="M100 58 L100 14 A44 44 0 0 1 132 26 Z" fill="#4C7BF5" opacity=".22"/></g>
+   <circle class="es-sig" cx="130" cy="40" r="3.4" fill="#FF335C"/><circle class="es-sig d2" cx="74" cy="76" r="3.4" fill="#FF335C"/><circle class="es-sig d3" cx="118" cy="84" r="3.4" fill="#4C7BF5"/>
+   <text x="100" y="104" fill="#8a8598" font-family="monospace" font-size="8" text-anchor="middle">signaux faibles</text>
+ </svg>`]
 ];
 
 
@@ -1231,7 +1347,8 @@ function render(lang){
  // expertises
  const eg=document.getElementById('expGrid');eg.innerHTML='';
  t.exp.forEach((e,i)=>{const c=el('div','exp glow reveal');c.style.transitionDelay=(i%3*.05)+'s';
-   c.innerHTML='<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">'+EXP_ICONS[i]+'</svg><div class="n">'+e[0]+'</div><h3>'+e[1]+'</h3><p>'+e[2]+'</p>';eg.appendChild(c);});
+   const sc=EXP_SCREENS[i]||['',''];
+   c.innerHTML='<div class="exp-screen"><div class="es-bar"><i></i><i></i><i></i><span>'+sc[0]+'</span></div><div class="es-view">'+sc[1]+'</div></div><div class="n">'+e[0]+'</div><h3>'+e[1]+'</h3><p>'+e[2]+'</p>';eg.appendChild(c);});
  // timeline
  const tg=document.getElementById('timeline');tg.innerHTML='';
  t.tl.forEach(r=>{const row=el('div','tl-row reveal');
@@ -1280,6 +1397,16 @@ function render(lang){
      c.innerHTML='<div><div class="vc-no">'+v[0]+' · ÉTAPE</div><h4>'+v[1]+'</h4></div><p>'+v[2]+'</p>';ss.appendChild(c);});
    if(window._csCleanup){try{window._csCleanup();}catch(e){}}
    if(window.initCardSwap){window._csCleanup=window.initCardSwap(ss,{cardDistance:48,verticalDistance:58,delay:3600,skewAmount:5});}
+ }
+ // testimonials
+ const tsc=document.getElementById('testiScore'),tg2=document.getElementById('testiGrid');
+ if(tsc&&tg2&&t.testi){
+   tsc.innerHTML='<div class="ts-n">'+t.tstat[0]+'</div><div class="ts-l">'+t.tstat[1]+'</div>';
+   tg2.innerHTML='';
+   t.testi.forEach((q,i)=>{const c=el('div','tcard reveal');c.style.transitionDelay=(i%2*.06)+'s';
+     const ini=q[1].split(' ').map(w=>w[0]).join('').slice(0,2);
+     c.innerHTML='<div class="q">'+q[0]+'</div><div class="who"><div class="av">'+ini+'</div><div><div class="nm">'+q[1]+'</div><div class="og">'+q[2]+'</div></div></div>';
+     tg2.appendChild(c);});
  }
  // border glow on cards
  if(window.initBorderGlow){window.initBorderGlow('.glow');}
