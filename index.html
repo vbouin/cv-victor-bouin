@@ -5,9 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Victor Bouin — Design · Innovation · IA</title>
 <meta name="description" content="Victor Bouin — Designer & entrepreneur. Innovation par le Design Thinking, solutions déployées et IA appliquée. Fondateur d'Exoflow, formateur emlyon.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --red:#FF335C; --red-d:#E11D48; --red-l:#FF8DA3;
@@ -174,6 +176,48 @@ footer{background:var(--ink);color:rgba(249,249,249,.4);font-family:var(--mono);
 .bf-card figcaption{display:flex;align-items:center;gap:12px;padding:16px 20px;font-family:var(--mono);font-size:.78rem;letter-spacing:.04em;color:rgba(249,249,249,.74)}
 .bf-step{color:var(--red-l);font-weight:700}
 
+/* STRUCTURES (Exoflow + Acmé) */
+.brandfilm{background:var(--paper-2)}
+.brandfilm .bf-head .eyebrow{color:var(--red-d)}
+.brandfilm .bf-head h2{color:var(--ink)}
+.brandfilm .bf-head h2 em{color:var(--red-d)}
+.str-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:760px){.str-grid{grid-template-columns:1fr}}
+.str-card{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:26px;transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s,border-color .4s}
+.str-card:hover{transform:translateY(-5px);box-shadow:0 28px 54px -32px rgba(11,10,16,.5);border-color:rgba(255,51,92,.32)}
+.str-logo{height:128px;border-radius:14px;display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:20px;overflow:hidden;position:relative}
+.str-exo{background:radial-gradient(120% 120% at 30% 0,rgba(76,123,245,.16),transparent 60%),#0B0A10}
+.str-exo .exo-mark{width:54px;height:60px;animation:exoBreath 4s ease-in-out infinite}
+.str-exo .exo-mark .t-r{transform-box:fill-box;transform-origin:center;animation:exoPiece 4s ease-in-out infinite}
+.str-exo .exo-word{font-family:var(--mono);font-weight:700;font-size:1.7rem;letter-spacing:-.02em;color:#fff}
+.str-exo::after{content:"";position:absolute;top:0;left:-40%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.14),transparent);animation:exoShine 4.4s ease-in-out infinite}
+@keyframes exoBreath{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+@keyframes exoPiece{0%,100%{opacity:1}50%{opacity:.78}}
+@keyframes exoShine{0%{left:-40%}55%,100%{left:120%}}
+.str-acme{background:#FAFAF8;border:1px solid rgba(11,10,16,.08)}
+.tf{position:relative;display:flex;gap:.06em}
+.tf-l{font-family:'Archivo','Inter',sans-serif;font-weight:800;font-size:2.7rem;letter-spacing:.02em;color:#0A0A0A;filter:blur(4px);opacity:.55;transition:filter .5s ease,opacity .5s ease}
+.tf-l.active{filter:blur(0);opacity:1}
+.tf-frame{position:absolute;top:50%;left:0;width:0;height:1.5em;transform:translateY(-50%);pointer-events:none;transition:left .5s cubic-bezier(.16,1,.3,1),width .5s cubic-bezier(.16,1,.3,1)}
+.tf-frame::before,.tf-frame::after{content:"";position:absolute;width:13px;height:13px;border:2px solid var(--red)}
+.tf-frame::before{top:-6px;left:-6px;border-right:0;border-bottom:0}
+.tf-frame::after{bottom:-6px;right:-6px;border-left:0;border-top:0}
+.str-card h3{font-family:var(--serif);font-size:1.6rem;font-weight:600;letter-spacing:-.01em}
+.str-role{font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(28,27,34,.5);margin:5px 0 16px}
+.str-list{list-style:none;display:flex;flex-direction:column;gap:11px}
+.str-list li{position:relative;padding-left:24px;font-size:.96rem;color:rgba(28,27,34,.8);line-height:1.4}
+.str-list li::before{content:"";position:absolute;left:0;top:.46em;width:10px;height:10px;border-radius:3px;background:var(--grad)}
+.str-list li b{color:var(--ink);font-weight:600}
+
+/* PARCOURS — 3 routes */
+.routes{margin:6px 0 48px;background:var(--white);border:1px solid var(--line);border-radius:20px;padding:20px 22px;overflow:hidden}
+.routes svg{width:100%;height:auto;display:block}
+.rt-lab{font-size:13px;letter-spacing:.06em;text-transform:uppercase;fill:rgba(28,27,34,.5)}
+.veh-brand{font-size:13px;font-weight:700;fill:var(--ink)}
+.veh{animation:drive linear infinite}
+.v1{animation-duration:12s}.v2{animation-duration:9s}.v3{animation-duration:14s;animation-delay:-4s}
+@keyframes drive{from{transform:translateX(-150px)}to{transform:translateX(1020px)}}
+
 /* LAYERS band */
 .layers{position:relative;min-height:78vh;display:flex;align-items:center;overflow:hidden;background:#07060a;padding:0}
 .layers-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.9}
@@ -226,7 +270,7 @@ footer{background:var(--ink);color:rgba(249,249,249,.4);font-family:var(--mono);
 @media(max-width:600px){.labo-grid{grid-template-columns:1fr}}
 .lab-card{background:#0f0f0e;border:1px solid rgba(249,249,249,.13);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .3s,transform .3s}
 .lab-card:hover{border-color:var(--accent,#ff5d76);transform:translateY(-4px)}
-.lab-stage{position:relative;aspect-ratio:16/11;background:radial-gradient(120% 130% at 50% 0,rgba(255,255,255,.06),transparent 60%),#0b0b0a;overflow:hidden}
+.lab-stage{position:relative;aspect-ratio:8/5;background:radial-gradient(120% 130% at 50% 0,rgba(255,255,255,.06),transparent 60%),#0b0b0a;overflow:hidden}
 .lab-stage svg{position:absolute;inset:0;width:100%;height:100%}
 .lab-meta{padding:18px 20px 20px}
 .lab-cli{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent,#ff5d76)}
@@ -310,31 +354,26 @@ footer{background:var(--ink);color:rgba(249,249,249,.4);font-family:var(--mono);
 @keyframes checkPop{0%,60%{transform:scale(0)}80%{transform:scale(1.2)}100%{transform:scale(1)}}
 .m-check{transform-origin:center;animation:checkPop 1.4s ease-out infinite}
 
-/* LAB playable animations (run when .lab-stage.run) */
-.lab-stage .p{opacity:0}
-.lab-stage.run .drone{animation:droneFly 3.4s ease-in-out forwards}
-@keyframes droneFly{0%{transform:translate(-60px,8px)}100%{transform:translate(150px,8px)}}
-.lab-stage.run .beam{animation:beamSweep 3.4s ease-in-out forwards}
-@keyframes beamSweep{0%,15%{opacity:0}25%{opacity:.55}90%{opacity:.55}100%{opacity:0}}
-.lab-stage.run .gv{animation:fadeUp .6s ease-out 1.6s forwards}
-@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-.lab-stage.run .batt{animation:battFill 3s ease-out forwards}
-@keyframes battFill{0%{width:0}100%{width:46px}}
-.lab-stage.run .bolt{animation:boltPulse 1s ease-in-out 3 forwards}
-@keyframes boltPulse{0%,100%{opacity:.3;transform:scale(.9)}50%{opacity:1;transform:scale(1.1)}}
-.lab-stage.run .liquid{animation:vialFill 3s ease-out forwards}
-@keyframes vialFill{0%{transform:translateY(56px)}100%{transform:translateY(0)}}
-.lab-stage.run .leaf{animation:leafGrow .8s ease-out 1.4s forwards}
-@keyframes leafGrow{from{opacity:0;transform:scale(0) rotate(-20deg)}to{opacity:1;transform:scale(1) rotate(0)}}
-.lab-stage.run .lid{animation:lidOpen 1s ease-out forwards;transform-origin:right bottom}
-@keyframes lidOpen{0%{transform:rotate(0)}100%{transform:rotate(-58deg)}}
-.lab-stage.run .tool{animation:toolPop .7s ease-out forwards}
-.lab-stage.run .tool.t2{animation-delay:.55s}.lab-stage.run .tool.t3{animation-delay:.8s}
-@keyframes toolPop{0%{opacity:0;transform:translateY(20px) scale(.6)}70%{opacity:1;transform:translateY(-6px) scale(1.05)}100%{opacity:1;transform:translateY(0) scale(1)}}
-.lab-stage.run .rank{animation:rankClimb 3s cubic-bezier(.5,.05,.2,1) forwards}
-@keyframes rankClimb{0%{transform:translateY(0)}100%{transform:translateY(-92px)}}
-.lab-stage.run .bub{animation:fadeUp .5s ease-out forwards}
-.lab-stage.run .bub.b2{animation-delay:.5s}.lab-stage.run .bub.b3{animation-delay:1s}
+/* LAB playable mini-apps (run when .lab-stage.run) */
+.lab-stage{background:radial-gradient(130% 130% at 50% -10%,rgba(255,255,255,.05),transparent 55%),#0c0b10!important}
+.lab-stage .lb-res,.lab-stage .lb-item{opacity:0}
+.lab-stage.run .lb-res{animation:lbRes .55s cubic-bezier(.16,1,.3,1) 2.4s forwards}
+@keyframes lbRes{from{opacity:0;transform:translateY(10px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+.lab-stage.run .lb-item{animation:lbItem .5s cubic-bezier(.16,1,.3,1) forwards}
+.lab-stage.run .lb-item.i2{animation-delay:.45s}.lab-stage.run .lb-item.i3{animation-delay:.9s}
+@keyframes lbItem{from{opacity:0;transform:translateX(-12px)}to{opacity:1;transform:none}}
+.lab-stage.run .lb-drone{animation:lbDrone 2.6s cubic-bezier(.4,0,.2,1) forwards}
+@keyframes lbDrone{0%{transform:translate(48px,52px)}100%{transform:translate(150px,52px)}}
+.lab-stage.run .lb-scan{animation:lbScan 2.4s ease-in-out forwards}
+@keyframes lbScan{0%{height:3px;opacity:0}12%{opacity:.55}100%{height:74px;opacity:.18}}
+.lab-stage.run .lb-ring{animation:lbRing 2.6s cubic-bezier(.4,0,.2,1) forwards}
+@keyframes lbRing{to{stroke-dashoffset:0}}
+.lab-stage.run .lb-vial{animation:lbVial 2.6s cubic-bezier(.4,0,.2,1) forwards}
+@keyframes lbVial{to{transform:translateY(-88px)}}
+.lab-stage.run .lb-bar{animation:lbBar 1s ease-out 1.4s forwards}
+@keyframes lbBar{from{width:0}to{width:118px}}
+.lab-stage.run .lb-climb{animation:lbClimb 2.4s cubic-bezier(.5,.05,.2,1) forwards}
+@keyframes lbClimb{from{transform:translateY(0)}to{transform:translateY(-112px)}}
 
 /* ===== CardSwap (ported) ===== */
 .cs-container{position:relative;width:100%;height:100%;perspective:900px;transform-style:preserve-3d;overflow:visible}
@@ -357,9 +396,25 @@ footer{background:var(--ink);color:rgba(249,249,249,.4);font-family:var(--mono);
 .story-stage{position:relative;height:360px}
 .cs-card.vc{width:300px;height:200px;border-radius:18px;border:1px solid var(--line-d);background:linear-gradient(165deg,var(--surface),#0e0c14);box-shadow:0 30px 60px -30px #000;padding:24px;display:flex;flex-direction:column;justify-content:space-between;color:var(--paper)}
 .cs-card.vc .vc-no{font-family:var(--mono);font-size:.7rem;letter-spacing:.18em;color:var(--red-l)}
-.cs-card.vc h4{font-family:var(--serif);font-size:1.6rem;font-weight:600;letter-spacing:-.01em}
-.cs-card.vc p{font-size:.88rem;color:rgba(247,245,242,.66)}
-.cs-card.vc .vc-ic{width:30px;height:30px;color:var(--red-l)}
+.cs-card.vc h4{font-family:var(--serif);font-size:1.4rem;font-weight:600;letter-spacing:-.01em;margin-top:3px}
+.cs-card.vc p{font-size:.84rem;color:rgba(247,245,242,.66)}
+.cs-card.vc .vc-top{display:flex;align-items:center;gap:14px}
+.cs-card.vc .vc-scene{width:64px;height:34px;flex-shrink:0}
+.cs-card.vc .vc-scene svg{width:100%;height:100%;overflow:visible}
+.vc-pulse{animation:vcPulse 2.4s ease-in-out infinite}
+@keyframes vcPulse{0%,100%{transform:scale(.86);opacity:.7}50%{transform:scale(1.08);opacity:1}}
+.vc-scan{animation:vcScan 2.6s ease-in-out infinite}
+@keyframes vcScan{0%,100%{transform:translateY(0)}50%{transform:translateY(12px)}}
+.vc-draw{stroke-dasharray:120;stroke-dashoffset:120;animation:vcDraw 3s ease-in-out infinite}
+@keyframes vcDraw{0%{stroke-dashoffset:120}65%,100%{stroke-dashoffset:0}}
+.vc-pen{animation:vcPen 3s ease-in-out infinite}
+@keyframes vcPen{0%{transform:translate(0,0)}65%,100%{transform:translate(74px,-24px)}}
+.vc-spark{animation:vcSpark 2.6s ease-in-out infinite}
+@keyframes vcSpark{0%,100%{transform:scale(.8) rotate(0)}50%{transform:scale(1) rotate(45deg)}}
+.vc-tw{animation:vcTw 1.8s ease-in-out infinite}.vc-tw.t2{animation-delay:.6s}
+@keyframes vcTw{0%,100%{opacity:.2;transform:scale(.6)}50%{opacity:1;transform:scale(1)}}
+.vc-rise{animation:vcRise 2.4s ease-in-out infinite}
+@keyframes vcRise{0%,100%{transform:translateY(3px)}50%{transform:translateY(-5px)}}
 .story-list{list-style:none;display:flex;flex-direction:column;gap:2px}
 .story-list li{display:flex;gap:16px;padding:15px 0;border-top:1px solid var(--line-d);font-size:1.02rem;color:rgba(247,245,242,.82);align-items:baseline;cursor:default;transition:.3s}
 .story-list li:hover{color:var(--paper);padding-left:8px}
@@ -444,22 +499,38 @@ footer{background:var(--ink);color:rgba(249,249,249,.4);font-family:var(--mono);
   <a class="scroll-cue" href="#references"><span data-i="hero.scroll">Défiler</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></a>
 </header>
 
-<!-- BRAND FILM BAND -->
-<section class="brandfilm">
+<!-- STRUCTURES (Exoflow + Acmé) -->
+<section class="brandfilm" id="structures">
   <div class="wrap">
     <div class="bf-head">
-      <p class="eyebrow reveal" data-i="bf.eyebrow">De l'esquisse à l'usage</p>
-      <h2 class="reveal" data-i="bf.title" data-i-html>Une idée se <em>dessine</em>,<br>puis devient réelle.</h2>
+      <p class="eyebrow reveal" data-i="str.eyebrow">Mes structures</p>
+      <h2 class="reveal" data-i="str.title" data-i-html>Deux maisons,<br>un même fil : la <em>valeur par l'usage.</em></h2>
     </div>
-    <div class="bf-grid">
-      <figure class="bf-card reveal">
-        <video src="assets/video/logo-draw.mp4" poster="assets/video/logo-draw.jpg" muted loop playsinline preload="metadata" aria-label="Logo Exoflow dessiné sur iPad"></video>
-        <figcaption><span class="bf-step">01</span><span data-i="bf.cap1">Le tracé — designer dans l'âme.</span></figcaption>
-      </figure>
-      <figure class="bf-card reveal" style="transition-delay:.08s">
-        <video src="assets/video/logo-objects.mp4" poster="assets/video/logo-objects.jpg" muted loop playsinline preload="metadata" aria-label="Logo Exoflow appliqué sur des objets réels"></video>
-        <figcaption><span class="bf-step">02</span><span data-i="bf.cap2">L'usage — l'objet dans la vraie vie.</span></figcaption>
-      </figure>
+    <div class="str-grid">
+      <article class="str-card reveal">
+        <div class="str-logo str-exo">
+          <svg class="exo-mark" viewBox="0 0 270 300" aria-hidden="true">
+            <path class="t-r" fill="#ff0033" d="M247.07,105.81H127.28l-37.6,17V229.69A102.66,102.66,0,1,1,247.07,105.81Z"/>
+            <path fill="#f9f9f9" d="M257,150a102.73,102.73,0,0,1-129.76,99V105.81H247.07A102.31,102.31,0,0,1,257,150Z"/>
+            <path fill="#195edd" d="M127.28,105.81V249a102.27,102.27,0,0,1-37.6-19.34V122.76Z"/>
+          </svg>
+          <span class="exo-word">exoflow</span>
+        </div>
+        <h3>Exoflow</h3>
+        <p class="str-role" data-i="str.exoRole">Conseil en innovation & design</p>
+        <ul class="str-list" id="exoList"></ul>
+      </article>
+      <article class="str-card reveal" style="transition-delay:.08s">
+        <div class="str-logo str-acme">
+          <div class="tf" id="acmeTF" aria-label="Acmé">
+            <span class="tf-l">A</span><span class="tf-l">C</span><span class="tf-l">M</span><span class="tf-l">É</span>
+            <span class="tf-frame"></span>
+          </div>
+        </div>
+        <h3>Acmé</h3>
+        <p class="str-role" data-i="str.acmeRole">Institut d'étude qualitative</p>
+        <ul class="str-list" id="acmeList"></ul>
+      </article>
     </div>
   </div>
 </section>
@@ -544,6 +615,33 @@ footer{background:var(--ink);color:rgba(249,249,249,.4);font-family:var(--mono);
     <div class="sec-head">
       <p class="eyebrow reveal" data-i="path.eyebrow">Parcours professionnel</p>
       <h2 class="reveal" data-i="path.title" data-i-html>Un fil conducteur :<br>concevoir, transmettre, faire.</h2>
+    </div>
+    <div class="routes reveal" aria-hidden="true">
+      <svg viewBox="0 0 1000 300" preserveAspectRatio="xMidYMid meet">
+        <g font-family="'Space Mono',monospace">
+          <!-- lane 1 : bike -->
+          <text class="rt-lab" x="6" y="62" data-i="rt.1">Design & innovation</text>
+          <line x1="6" y1="80" x2="994" y2="80" stroke="rgba(28,27,34,.16)" stroke-width="2" stroke-dasharray="10 12"/>
+          <g class="veh v1">
+            <text class="veh-brand" x="20" y="58" text-anchor="middle">Yves Rocher</text>
+            <g transform="translate(0,80)"><circle cx="6" cy="6" r="9" fill="none" stroke="#FF335C" stroke-width="2.5"/><circle cx="34" cy="6" r="9" fill="none" stroke="#FF335C" stroke-width="2.5"/><path d="M6 6 L20 -6 L34 6 M20 -6 L22 6 M6 6 L34 6" fill="none" stroke="#FF335C" stroke-width="2.5" stroke-linejoin="round"/><path d="M20 -6 l6 -3" stroke="#FF335C" stroke-width="2.5"/></g>
+          </g>
+          <!-- lane 2 : car -->
+          <text class="rt-lab" x="6" y="147" data-i="rt.2">Conseil & projets</text>
+          <line x1="6" y1="165" x2="994" y2="165" stroke="rgba(28,27,34,.16)" stroke-width="2" stroke-dasharray="10 12"/>
+          <g class="veh v2">
+            <text class="veh-brand" x="34" y="143" text-anchor="middle">Renault</text>
+            <g transform="translate(0,165)"><path d="M2 0 q4 -20 22 -20 l20 0 q14 0 20 12 l8 2 q6 2 6 8 l0 -2 -84 0z" fill="#4C7BF5"/><rect x="14" y="-15" width="20" height="11" rx="3" fill="#0B0A10" opacity=".35"/><circle cx="18" cy="2" r="8" fill="#0B0A10"/><circle cx="18" cy="2" r="3.4" fill="#cfd8f7"/><circle cx="60" cy="2" r="8" fill="#0B0A10"/><circle cx="60" cy="2" r="3.4" fill="#cfd8f7"/></g>
+          </g>
+          <!-- lane 3 : bus -->
+          <text class="rt-lab" x="6" y="232" data-i="rt.3">Formation & transmission</text>
+          <line x1="6" y1="250" x2="994" y2="250" stroke="rgba(28,27,34,.16)" stroke-width="2" stroke-dasharray="10 12"/>
+          <g class="veh v3">
+            <text class="veh-brand" x="55" y="228" text-anchor="middle">emlyon</text>
+            <g transform="translate(0,250)"><rect x="0" y="-30" width="112" height="30" rx="6" fill="#0B0A10"/><rect x="8" y="-24" width="16" height="12" rx="2" fill="#4C7BF5" opacity=".7"/><rect x="30" y="-24" width="16" height="12" rx="2" fill="#4C7BF5" opacity=".7"/><rect x="52" y="-24" width="16" height="12" rx="2" fill="#4C7BF5" opacity=".7"/><rect x="74" y="-24" width="16" height="12" rx="2" fill="#4C7BF5" opacity=".7"/><rect x="96" y="-24" width="12" height="12" rx="2" fill="#FF335C"/><circle cx="26" cy="2" r="8" fill="#1c1b22"/><circle cx="26" cy="2" r="3.4" fill="#888"/><circle cx="86" cy="2" r="8" fill="#1c1b22"/><circle cx="86" cy="2" r="3.4" fill="#888"/></g>
+          </g>
+        </g>
+      </svg>
     </div>
     <div class="timeline" id="timeline"></div>
   </div>
@@ -1134,6 +1232,18 @@ const I18N={
  fr:{
   'nav.refs':'Références','nav.approach':'Approche','nav.expertise':'Expertises','nav.method':'Méthode','nav.lab':'Labo clients','nav.path':'Parcours','nav.projects':'Projets IA','nav.vision':'Vision','nav.contact':'Contact',
   'cli.eyebrow':"Ils m'ont fait confiance",'cli.title':"Grands groupes & ETI.<br>Survolez : mission & relation.",'cli.foot':"Missions réelles — des relations de quelques mois à près de 20 ans.",
+  'str.eyebrow':'Mes structures','str.title':"Deux maisons,<br>un même fil : la <em>valeur par l'usage.</em>",'str.exoRole':'Conseil en innovation & design','str.acmeRole':"Institut d'étude qualitative",
+  'rt.1':'Design & innovation','rt.2':'Conseil & projets','rt.3':'Formation & transmission',
+  exoBul:[
+   ["<b>Cofondateur</b> — conseil en innovation & design (depuis 2017)."],
+   ["De l'<b>intuition</b> à la solution déployée, avec un impact mesurable."],
+   ["Design Thinking, <b>IA appliquée</b>, prototypage & mise en production."]
+  ],
+  acmeBul:[
+   ["<b>Manager & associé</b> — institut d'étude qualitative."],
+   ["La <b>voix du terrain</b> : entretiens, verbatim, insights."],
+   ["Des décisions stratégiques <b>ancrées dans le réel</b> client."]
+  ],
   'bf.eyebrow':"Ma vision de l'innovation",'bf.title':"Du besoin réel<br>à la <em>valeur diffusée.</em>",'bf.cap1':"J'ancre dans les besoins réels des utilisateurs.",'bf.cap2':"Je crée ce qui se diffuse, s'utilise et crée de la valeur pour l'organisation.",
   'met.eyebrow':"Ma façon d'accompagner",'met.title':"Des modalités vivantes,<br>en présentiel comme en visio.",'met.sub':"Cliquez sur chaque carte : voici les outils concrets que j'anime au quotidien.",
   'lab.eyebrow':'Labo · solutions jouables','lab.title':'Mes clients,<br>en solutions interactives.','lab.sub':"Cinq solutions conçues et déployées avec mes équipes, inspirées de missions réelles. Cliquez : elles s'animent.",
@@ -1242,6 +1352,18 @@ const I18N={
  en:{
   'nav.refs':'References','nav.approach':'Approach','nav.expertise':'Expertise','nav.method':'Method','nav.lab':'Client lab','nav.path':'Career','nav.projects':'AI Projects','nav.vision':'Vision','nav.contact':'Contact',
   'cli.eyebrow':'They trusted me','cli.title':'Major groups & mid-caps.<br>Hover: mission & relationship.','cli.foot':'Real engagements — relationships from a few months to nearly 20 years.',
+  'str.eyebrow':'My companies','str.title':'Two houses,<br>one thread: <em>value through use.</em>','str.exoRole':'Innovation & design consultancy','str.acmeRole':'Qualitative research institute',
+  'rt.1':'Design & innovation','rt.2':'Advisory & projects','rt.3':'Training & teaching',
+  exoBul:[
+   ["<b>Co-founder</b> — innovation & design consultancy (since 2017)."],
+   ["From <b>intuition</b> to a deployed solution, with measurable impact."],
+   ["Design Thinking, <b>applied AI</b>, prototyping & go-live."]
+  ],
+  acmeBul:[
+   ["<b>Manager & partner</b> — qualitative research institute."],
+   ["The <b>voice of the field</b>: interviews, verbatim, insight."],
+   ["Strategic decisions <b>grounded in customer reality</b>."]
+  ],
   'bf.eyebrow':'My vision of innovation','bf.title':'From the real need<br>to <em>value, diffused.</em>','bf.cap1':"I anchor in users' real needs.",'bf.cap2':'I build what spreads, gets used and creates value for the organisation.',
   'met.eyebrow':'How I work with you','met.title':'Living formats,<br>on-site and remote.','met.sub':'Click each card: these are the concrete tools I run every day.',
   'lab.eyebrow':'Lab · playable solutions','lab.title':'My clients,<br>as interactive solutions.','lab.sub':'Five solutions designed and deployed with my teams, inspired by real engagements. Click: they come alive.',
@@ -1404,19 +1526,27 @@ const MET_ART=[
 
 // ---- LAB playable widgets (index matches t.lab); [accent, svg] ----
 const LAB_ART=[
- ['#00a651', // Groupama drone
-  `<svg viewBox="0 0 320 220"><rect x="40" y="150" width="240" height="3" fill="#2a2a28"/><g opacity=".9"><rect x="120" y="92" width="80" height="60" fill="#1d1d1b" stroke="#3a3a37"/><path d="M120 92 l40 -26 40 26z" fill="#242422" stroke="#3a3a37"/><rect x="150" y="116" width="20" height="36" fill="#0b0b0a"/></g><polygon class="beam p" points="160,40 130,150 190,150" fill="#00a651" opacity=".0"/><g class="drone"><rect x="138" y="36" width="44" height="10" rx="5" fill="#e8e8e6"/><circle cx="160" cy="41" r="7" fill="#00a651"/><rect x="120" y="30" width="20" height="3" rx="1.5" fill="#9aa0a6"/><rect x="180" y="30" width="20" height="3" rx="1.5" fill="#9aa0a6"/></g><g class="gv p" transform="translate(206,60)"><rect width="92" height="34" rx="6" fill="#101010" stroke="#00a651"/><text x="10" y="15" fill="#00a651" font-family="monospace" font-size="9">RISQUE</text><text x="10" y="28" fill="#f9f9f9" font-family="monospace" font-size="11">12 480 €</text></g></svg>`],
- ['#ffcc00', // Renault EV
-  `<svg viewBox="0 0 320 220"><path d="M60 150 q4 -44 44 -46 l70 0 q30 0 44 30 l24 6 q14 4 14 18 l0 30 -200 0z" fill="#1d1d1b" stroke="#3a3a37"/><circle cx="110" cy="158" r="18" fill="#0b0b0a" stroke="#444"/><circle cx="226" cy="158" r="18" fill="#0b0b0a" stroke="#444"/><rect x="118" y="92" width="46" height="22" rx="22" fill="#101010" stroke="#666"/><rect class="batt" x="120" y="94" width="0" height="18" rx="18" fill="#ffcc00"/><g class="bolt p"><path d="M250 70 l-12 22 8 0 -6 18 18 -26 -9 0 7 -14z" fill="#ffcc00"/></g><text x="20" y="30" fill="#777" font-family="monospace" font-size="10">EV · 0 → 100%</text></svg>`],
- ['#7a00e6', // Sanofi vaccine + CSR
-  `<svg viewBox="0 0 320 220"><defs><clipPath id="vialClip"><rect x="140" y="60" width="40" height="96" rx="8"/></clipPath></defs><rect x="146" y="48" width="28" height="14" rx="3" fill="#cfcfcf"/><rect x="140" y="60" width="40" height="96" rx="8" fill="#0e0e0d" stroke="#7a00e6"/><g clip-path="url(#vialClip)"><rect class="liquid" x="140" y="60" width="40" height="96" fill="#9b3cff" opacity=".85"/></g><g class="leaf p" transform="translate(210,96)"><path d="M0 30 C0 8 20 0 34 0 C34 22 16 32 0 30Z" fill="#16a34a"/><path d="M6 26 q12 -10 24 -20" stroke="#0b3d1f" stroke-width="2" fill="none"/><text x="-4" y="48" fill="#16a34a" font-family="monospace" font-size="9">RSE +</text></g><text x="20" y="30" fill="#777" font-family="monospace" font-size="10">VACCIN</text></svg>`],
- ['#ff0033', // Gedimat tools-in-box
-  `<svg viewBox="0 0 320 220"><rect x="108" y="120" width="104" height="56" rx="6" fill="#1d1d1b" stroke="#ff0033"/><rect x="150" y="120" width="20" height="56" fill="#141413"/><g class="tool p" transform="translate(126,118)"><rect x="-3" y="-44" width="6" height="44" rx="2" fill="#c0c0c0"/><rect x="-8" y="-52" width="16" height="12" rx="2" fill="#ff0033"/></g><g class="tool t2 p" transform="translate(160,118)"><rect x="-2" y="-40" width="5" height="40" fill="#c0c0c0"/><path d="M-7 -40 l12 0 -6 -12z" fill="#9aa0a6"/></g><g class="tool t3 p" transform="translate(196,118)"><circle cx="0" cy="-34" r="11" fill="none" stroke="#ffcc00" stroke-width="5"/><rect x="-2" y="-24" width="4" height="26" fill="#c0c0c0"/></g><g class="lid"><rect x="108" y="106" width="104" height="16" rx="5" fill="#242422" stroke="#ff0033"/></g><text x="20" y="30" fill="#777" font-family="monospace" font-size="10">RECO PRODUIT</text></svg>`],
- ['#195edd', // Semji SEO
-  `<svg viewBox="0 0 320 220"><rect x="30" y="40" width="150" height="140" rx="8" fill="#0e0e0d" stroke="#2a2a28"/><g opacity=".5"><rect x="44" y="150" width="120" height="9" rx="2" fill="#222"/><rect x="44" y="132" width="120" height="9" rx="2" fill="#222"/><rect x="44" y="114" width="120" height="9" rx="2" fill="#222"/><rect x="44" y="96" width="120" height="9" rx="2" fill="#222"/><rect x="44" y="78" width="120" height="9" rx="2" fill="#222"/></g><g class="rank"><rect x="40" y="150" width="128" height="11" rx="3" fill="#195edd"/></g><text x="46" y="62" fill="#195edd" font-family="monospace" font-size="9">SERP · #8 → #1</text><g class="bub p" transform="translate(196,60)"><rect width="98" height="26" rx="13" fill="#15151a" stroke="#195edd"/><text x="10" y="17" fill="#cfe0ff" font-family="monospace" font-size="8">"intent clair"</text></g><g class="bub b2 p" transform="translate(206,96)"><rect width="98" height="26" rx="13" fill="#15151a" stroke="#195edd"/><text x="10" y="17" fill="#cfe0ff" font-family="monospace" font-size="8">"maillage +"</text></g><g class="bub b3 p" transform="translate(200,132)"><rect width="98" height="26" rx="13" fill="#15151a" stroke="#195edd"/><text x="10" y="17" fill="#cfe0ff" font-family="monospace" font-size="8">"E-E-A-T"</text></g></svg>`]
+ ['#00a651', // Groupama — risk scan
+  `<svg viewBox="0 0 320 200"><text x="22" y="30" fill="#5a6b62" font-family="monospace" font-size="10">RISK SCAN · DRONE</text><rect x="42" y="108" width="150" height="74" rx="5" fill="#11140f" stroke="#243126"/><path d="M42 108 L117 78 L192 108Z" fill="#161a13" stroke="#243126"/><rect x="60" y="124" width="22" height="22" fill="#0c0e0b"/><rect x="100" y="124" width="22" height="22" fill="#0c0e0b"/><rect x="140" y="124" width="22" height="22" fill="#0c0e0b"/><rect class="lb-scan" x="42" y="108" width="150" height="3" fill="#00a651"/><g class="lb-drone"><rect x="-15" y="-4" width="30" height="8" rx="4" fill="#e8e8e6"/><circle cx="0" cy="0" r="5" fill="#00a651"/><line x1="-22" y1="-7" x2="-8" y2="-7" stroke="#9aa0a6" stroke-width="2.5"/><line x1="8" y1="-7" x2="22" y2="-7" stroke="#9aa0a6" stroke-width="2.5"/></g><g class="lb-res" transform="translate(212,64)"><rect width="90" height="46" rx="9" fill="#0c1a12" stroke="#00a651"/><text x="13" y="19" fill="#3fd187" font-family="monospace" font-size="8">ÉVALUÉ ✓</text><text x="13" y="36" fill="#f7f5f2" font-family="monospace" font-size="14">−30%</text></g></svg>`],
+ ['#c98f00', // Renault — EV charge
+  `<svg viewBox="0 0 320 200"><text x="22" y="30" fill="#6b5f3a" font-family="monospace" font-size="10">EV · CHARGE</text><circle cx="116" cy="112" r="44" fill="none" stroke="#272218" stroke-width="9"/><circle class="lb-ring" cx="116" cy="112" r="44" fill="none" stroke="#ffcc00" stroke-width="9" stroke-linecap="round" transform="rotate(-90 116 112)" stroke-dasharray="276.5" stroke-dashoffset="276.5"/><path d="M120 92 l-13 24 9 0 -7 20 20 -28 -10 0 8 -16z" fill="#ffcc00"/><g class="lb-res" transform="translate(212,90)"><rect width="92" height="46" rx="9" fill="#1a1710" stroke="#ffcc00"/><text x="13" y="19" fill="#ffd84d" font-family="monospace" font-size="8">SATISFACTION</text><text x="13" y="36" fill="#f7f5f2" font-family="monospace" font-size="14">+22 pts</text></g></svg>`],
+ ['#9b3cff', // Sanofi — batch QC
+  `<svg viewBox="0 0 320 200"><defs><clipPath id="lbVialC"><rect x="92" y="58" width="34" height="92" rx="9"/></clipPath></defs><text x="22" y="30" fill="#5e4a72" font-family="monospace" font-size="10">BATCH · QC</text><rect x="97" y="48" width="24" height="12" rx="3" fill="#cfcfcf"/><rect x="92" y="58" width="34" height="92" rx="9" fill="#0e0c14" stroke="#7a00e6"/><g clip-path="url(#lbVialC)"><rect class="lb-vial" x="92" y="150" width="34" height="92" fill="#9b3cff"/></g><text x="150" y="104" fill="#5fae7e" font-family="monospace" font-size="8">RSE</text><rect x="150" y="112" width="118" height="9" rx="4" fill="#241a2e"/><rect class="lb-bar" x="150" y="112" width="0" height="9" rx="4" fill="#16a34a"/><g class="lb-res" transform="translate(150,52)"><rect width="100" height="42" rx="9" fill="#160c1e" stroke="#7a00e6"/><text x="13" y="18" fill="#b07bff" font-family="monospace" font-size="8">LOT VALIDÉ ✓</text><text x="13" y="34" fill="#f7f5f2" font-family="monospace" font-size="13">−40% QC</text></g></svg>`],
+ ['#FF335C', // Gedimat — reco engine
+  `<svg viewBox="0 0 320 200"><text x="22" y="30" fill="#6b3a45" font-family="monospace" font-size="10">RECO ENGINE</text><g class="lb-item i1"><rect x="28" y="44" width="156" height="28" rx="6" fill="#16131a" stroke="#2a2630"/><circle cx="46" cy="58" r="8" fill="#FF335C"/><rect x="62" y="52" width="92" height="4.5" rx="2" fill="#3a3550"/><rect x="62" y="61" width="58" height="4.5" rx="2" fill="#262230"/></g><g class="lb-item i2"><rect x="28" y="80" width="156" height="28" rx="6" fill="#16131a" stroke="#2a2630"/><circle cx="46" cy="94" r="8" fill="#ff7a93"/><rect x="62" y="88" width="80" height="4.5" rx="2" fill="#3a3550"/><rect x="62" y="97" width="64" height="4.5" rx="2" fill="#262230"/></g><g class="lb-item i3"><rect x="28" y="116" width="156" height="28" rx="6" fill="#16131a" stroke="#2a2630"/><circle cx="46" cy="130" r="8" fill="#ffb3c2"/><rect x="62" y="124" width="86" height="4.5" rx="2" fill="#3a3550"/><rect x="62" y="133" width="48" height="4.5" rx="2" fill="#262230"/></g><g class="lb-res" transform="translate(210,84)"><rect width="92" height="46" rx="9" fill="#1e0c12" stroke="#FF335C"/><text x="13" y="19" fill="#ff8da3" font-family="monospace" font-size="8">PANIER MOYEN</text><text x="13" y="36" fill="#f7f5f2" font-family="monospace" font-size="14">+12%</text></g></svg>`],
+ ['#1e6fff', // Semji — SERP rank
+  `<svg viewBox="0 0 320 200"><text x="22" y="30" fill="#3a4a6b" font-family="monospace" font-size="10">SERP · RANK #8 → #1</text><g opacity=".4"><rect x="34" y="160" width="150" height="9" rx="2" fill="#1a2030"/><rect x="34" y="142" width="150" height="9" rx="2" fill="#1a2030"/><rect x="34" y="124" width="150" height="9" rx="2" fill="#1a2030"/><rect x="34" y="106" width="150" height="9" rx="2" fill="#1a2030"/><rect x="34" y="88" width="150" height="9" rx="2" fill="#1a2030"/><rect x="34" y="70" width="150" height="9" rx="2" fill="#1a2030"/></g><g class="lb-climb"><rect x="30" y="158" width="158" height="13" rx="3" fill="#1e6fff"/></g><g class="lb-item i1" transform="translate(206,58)"><rect width="96" height="24" rx="12" fill="#10131c" stroke="#1e6fff"/><text x="12" y="16" fill="#9bc0ff" font-family="monospace" font-size="8">intent clair</text></g><g class="lb-item i2" transform="translate(206,90)"><rect width="96" height="24" rx="12" fill="#10131c" stroke="#1e6fff"/><text x="12" y="16" fill="#9bc0ff" font-family="monospace" font-size="8">maillage +</text></g><g class="lb-res" transform="translate(206,124)"><rect width="96" height="42" rx="9" fill="#0c1322" stroke="#1e6fff"/><text x="12" y="18" fill="#9bc0ff" font-family="monospace" font-size="8">RANK</text><text x="12" y="34" fill="#f7f5f2" font-family="monospace" font-size="14">#1</text></g></svg>`]
 ];
 
 const VIS_MEDIA={replace:'vision-replace',speed:'vision-speed',interface:'vision-interface',augment:'vision-augment'};
+// value-chain mini-scenes (one per step, dark cards)
+const VC_SCENES=[
+ `<svg viewBox="0 0 110 54"><g class="vc-pulse" style="transform-origin:55px 27px"><circle cx="55" cy="22" r="9" fill="none" stroke="#FF335C" stroke-width="2.4"/><path d="M51 31 h8 M52 35 h6" stroke="#FF335C" stroke-width="2.4"/></g><g stroke="#FF335C" stroke-width="2" opacity=".7"><path d="M55 5 v5"/><path d="M73 22 h5"/><path d="M32 22 h5"/></g></svg>`,
+ `<svg viewBox="0 0 110 54"><circle cx="30" cy="24" r="11" fill="none" stroke="#4C7BF5" stroke-width="2.2"/><circle cx="30" cy="20" r="4" fill="#4C7BF5"/><path d="M22 33 a8 6 0 0 1 16 0z" fill="#4C7BF5"/><rect x="50" y="16" width="44" height="4" rx="2" fill="#3a3550"/><rect x="50" y="26" width="34" height="4" rx="2" fill="#3a3550"/><rect class="vc-scan" x="48" y="13" width="40" height="10" rx="2" fill="#FF335C" opacity=".25"/></svg>`,
+ `<svg viewBox="0 0 110 54"><rect x="14" y="8" width="82" height="38" rx="4" fill="none" stroke="#2c2838"/><path class="vc-draw" d="M22 38 Q40 12 60 30 T96 14" fill="none" stroke="#4C7BF5" stroke-width="2.6" stroke-linecap="round"/><circle class="vc-pen" cx="22" cy="38" r="3.2" fill="#FF335C"/></svg>`,
+ `<svg viewBox="0 0 110 54"><path class="vc-spark" style="transform-origin:55px 27px" d="M55 9 C57 21 63 27 75 29 C63 31 57 37 55 49 C53 37 47 31 35 29 C47 27 53 21 55 9Z" fill="#4C7BF5"/><circle class="vc-tw" cx="84" cy="14" r="3" fill="#FF335C"/><circle class="vc-tw t2" cx="26" cy="40" r="2.5" fill="#FF8DA3"/></svg>`,
+ `<svg viewBox="0 0 110 54"><g class="vc-rise"><path d="M55 8 c8 6 8 20 0 30 c-8 -10 -8 -24 0 -30Z" fill="#FF335C"/><circle cx="55" cy="22" r="3.4" fill="#0B0A10"/><path d="M48 36 l7 8 7 -8z" fill="#4C7BF5"/></g><path d="M40 48 h30" stroke="#2c2838" stroke-width="2"/></svg>`
+];
 let io;
 function render(lang){
  const t=I18N[lang];
@@ -1475,8 +1605,8 @@ function render(lang){
  if(sl&&ss){
    sl.innerHTML='';ss.innerHTML='';
    (t.vc||[]).forEach(v=>{const li=el('li');li.innerHTML='<b>'+v[0]+'</b><span><strong style="font-weight:600">'+v[1]+'</strong> — '+v[2]+'</span>';sl.appendChild(li);});
-   (t.vc||[]).forEach(v=>{const c=el('div','cs-card vc');
-     c.innerHTML='<div><div class="vc-no">'+v[0]+' · ÉTAPE</div><h4>'+v[1]+'</h4></div><p>'+v[2]+'</p>';ss.appendChild(c);});
+   (t.vc||[]).forEach((v,vi)=>{const c=el('div','cs-card vc');
+     c.innerHTML='<div class="vc-top"><div class="vc-scene">'+(VC_SCENES[vi]||'')+'</div><div><div class="vc-no">'+v[0]+' · '+(lang==='en'?'STEP':'ÉTAPE')+'</div><h4>'+v[1]+'</h4></div></div><p>'+v[2]+'</p>';ss.appendChild(c);});
    if(window._csCleanup){try{window._csCleanup();}catch(e){}}
    if(window.initCardSwap){window._csCleanup=window.initCardSwap(ss,{cardDistance:48,verticalDistance:58,delay:3600,skewAmount:5});}
  }
@@ -1489,6 +1619,10 @@ function render(lang){
      c.innerHTML='<div class="bub">'+q[0]+'</div><div class="bub-who">'+q[1]+'</div>';
      tg2.appendChild(c);});
  }
+ // structures bullets
+ const exoL=document.getElementById('exoList'),acmeL=document.getElementById('acmeList');
+ if(exoL&&t.exoBul){exoL.innerHTML='';t.exoBul.forEach(b=>exoL.appendChild(el('li',null,b[0])));}
+ if(acmeL&&t.acmeBul){acmeL.innerHTML='';t.acmeBul.forEach(b=>acmeL.appendChild(el('li',null,b[0])));}
  // layers chips
  const lc=document.getElementById('layersChips');
  if(lc&&t.lchips){lc.innerHTML='';t.lchips.forEach(x=>lc.appendChild(el('span','layers-chip',x)));}
@@ -1530,7 +1664,11 @@ addEventListener('scroll',()=>{
 });
 // RippleGrid interactive WebGL background in hero
 try{ if(window.initRippleGrid){ window.__rip=window.initRippleGrid(document.querySelector('.hero'),{gridColor:'#ff3357',opacity:0.5,gridSize:15,gridThickness:24,glowIntensity:0.14,vignetteStrength:1.7,rippleIntensity:0.045}); } }catch(e){}
-// brand film: play when in view
+// Acmé TrueFocus animation
+(function trueFocus(){const tf=document.getElementById('acmeTF');if(!tf)return;const L=[].slice.call(tf.querySelectorAll('.tf-l')),fr=tf.querySelector('.tf-frame');if(!L.length||!fr)return;let i=0;function step(){L.forEach(l=>l.classList.remove('active'));const a=L[i];a.classList.add('active');fr.style.left=a.offsetLeft+'px';fr.style.width=a.offsetWidth+'px';i=(i+1)%L.length;}step();setInterval(step,1150);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(step);})();
+// parcours: cycle client branding on the 3 vehicles
+(function vehBrands(){const sets=[['Yves Rocher','Nexity','Vinci','bioMérieux'],['Renault','Sanofi','BNP Paribas','Groupama'],['emlyon','ESSCA','Rennes SB','Eureden']];const els=document.querySelectorAll('.routes .veh .veh-brand');if(!els.length)return;let k=0;setInterval(function(){k++;els.forEach(function(e,li){const s=sets[li]||sets[0];e.textContent=s[k%s.length];});},2400);})();
+// videos: play when in view
 const vio=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;if(e.isIntersecting){v.play&&v.play().catch(()=>{});}else{v.pause&&v.pause();}}),{threshold:.35});
 window.__vio=vio;
 document.querySelectorAll('.bf-card video,.layers-vid,.vchap video').forEach(v=>vio.observe(v));
