@@ -1,23 +1,31 @@
 # Victor Bouin — CV interactif
 
 CV interactif one-page (scrollytelling, bilingue FR/EN) — Design · Innovation · IA.
-Identité Exoflow. 100 % statique, aucune étape de build.
+DA premium « luminous noir », identité Exoflow. 100 % statique, aucun build.
 
-**En ligne :** https://vbouin.github.io/cv-victor-bouin/
+## Déploiement Vercel (recommandé)
+Repo **privé**. Deux options :
 
-## Aperçu local
-Ouvrir `index.html`, ou :
+**A. Depuis le dépôt GitHub (le plus simple)**
+1. vercel.com → *Add New… → Project* → *Import* `vbouin/cv-victor-bouin`
+2. Framework Preset : **Other** · Build Command : *(vide)* · Output Directory : `.`
+3. Deploy. (Le `vercel.json` gère URLs propres, cache et en-têtes de sécurité.)
+
+**B. En CLI**
 ```bash
-python3 -m http.server 4680
+npm i -g vercel
+cd cv-victor
+vercel        # preview
+vercel --prod # production
 ```
 
+## Aperçu local
+Ouvrir `index.html`, ou `python3 -m http.server 4680`.
+
 ## Contenu
-Hero · Approche · Expertises · Parcours · Formations · Projets IA · Clients · Contact
-Toggle FR/EN (mémorisé en localStorage).
+Hero · Structures (Exoflow/Acmé) · Références · Témoignages · Approche · Chaîne de valeur ·
+Expertises · Méthode · Labo clients · Layers · Parcours · Formations · Projets IA · Vision · Contact
 
-## Logos clients
-16 logos officiels (Wikimedia Commons) dans `assets/logos/`.
-TotalEnergies, France Travail et Cerba sont en pastille texte (logo libre non trouvé sur Commons).
-
-## Crédits
-Logos = marques respectives (Wikimedia Commons). Identité visuelle : Exoflow.
+## Notes
+- Données 100 % en dur (i18n FR/EN) — pas d'entrée utilisateur, pas de backend, pas de secret.
+- Logos clients : Wikimedia Commons. Témoignages : verbatims réels (questionnaire de satisfaction 2025).
