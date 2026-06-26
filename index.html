@@ -36,9 +36,11 @@ nav.scrolled{background:rgba(249,249,249,.82);backdrop-filter:blur(14px);box-sha
 nav .brand{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase}
 nav .brand svg{height:26px;width:auto}
 nav .right{display:flex;align-items:center;gap:26px}
-nav .links{display:flex;gap:26px;font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase}
-nav .links a{text-decoration:none;opacity:.62;transition:opacity .25s}
+nav .links{display:flex;gap:24px;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;font-weight:500}
+nav .links a{text-decoration:none;opacity:.9;transition:color .25s,opacity .25s;position:relative}
+nav .links a::after{content:"";position:absolute;left:0;right:100%;bottom:-5px;height:1.5px;background:var(--red);transition:right .28s cubic-bezier(.16,1,.3,1)}
 nav .links a:hover{opacity:1;color:var(--red-d)}
+nav .links a:hover::after{right:0}
 .lang{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;border:1px solid var(--line);border-radius:30px;padding:6px 4px;display:flex;gap:2px;background:rgba(255,255,255,.5)}
 .lang button{font:inherit;border:0;background:none;cursor:pointer;padding:4px 9px;border-radius:30px;color:rgba(52,51,51,.55);transition:.2s}
 .lang button.on{background:var(--ink);color:var(--paper)}
@@ -49,8 +51,9 @@ nav.on-dark .lang button.on{background:var(--paper);color:var(--ink)}
 @media(max-width:820px){nav .links{display:none}}
 
 /* HERO */
-.hero{min-height:100vh;display:flex;align-items:center;position:relative;background:radial-gradient(120% 90% at 80% 10%,var(--halo),transparent 55%),radial-gradient(90% 80% at 0% 100%,hsl(348 90% 55% / .18),transparent 55%),var(--ink);color:var(--paper);overflow:hidden}
-.hero>canvas{position:absolute!important;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;background:radial-gradient(120% 90% at 88% 12%,var(--halo),transparent 52%),var(--ink);color:var(--paper);overflow:hidden}
+.hero>canvas{position:absolute!important;inset:0;width:118%;height:100%;left:-18%;z-index:1;pointer-events:none}
+.hero::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(90deg,rgba(11,10,16,.9) 0%,rgba(11,10,16,.66) 38%,rgba(11,10,16,.18) 66%,transparent 82%)}
 .hero .wrap{position:relative;z-index:3;padding-top:90px;padding-bottom:60px}
 .hero h1{font-size:clamp(2.9rem,8.4vw,6.8rem);color:var(--paper);letter-spacing:-.025em;line-height:1}
 .hero h1 em{font-style:italic;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
@@ -59,9 +62,11 @@ nav.on-dark .lang button.on{background:var(--paper);color:var(--ink)}
 .hero .sign::before{content:"";width:46px;height:1px;background:var(--red-l)}
 .hero-art{position:absolute;right:-6%;top:50%;transform:translateY(-50%);width:min(48vw,560px);opacity:.5;z-index:2;pointer-events:none}
 @media(max-width:900px){.hero-art{opacity:.12;right:-20%}}
-.scroll-cue{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:3;font-family:var(--mono);font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(249,249,249,.5);display:flex;flex-direction:column;align-items:center;gap:8px}
-.scroll-cue span{width:1px;height:34px;background:linear-gradient(var(--red-l),transparent);animation:cue 2s infinite}
-@keyframes cue{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}50.1%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.scroll-cue{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);z-index:4;font-family:var(--mono);font-size:.6rem;letter-spacing:.26em;text-transform:uppercase;color:rgba(247,245,242,.62);display:inline-flex;align-items:center;gap:9px;text-decoration:none;padding:8px 14px;border:1px solid rgba(247,245,242,.18);border-radius:30px;background:rgba(11,10,16,.25);backdrop-filter:blur(6px);transition:.3s;cursor:pointer}
+.scroll-cue:hover{color:var(--paper);border-color:var(--red-l)}
+.scroll-cue svg{width:11px;height:11px;animation:cueBob 1.8s ease-in-out infinite}
+@keyframes cueBob{0%,100%{transform:translateY(-1px)}50%{transform:translateY(2px)}}
+@media(max-width:600px){.scroll-cue{display:none}}
 
 /* SECTION */
 section{padding:118px 0;position:relative}
@@ -169,6 +174,17 @@ footer{background:var(--ink);color:rgba(249,249,249,.4);font-family:var(--mono);
 .bf-card figcaption{display:flex;align-items:center;gap:12px;padding:16px 20px;font-family:var(--mono);font-size:.78rem;letter-spacing:.04em;color:rgba(249,249,249,.74)}
 .bf-step{color:var(--red-l);font-weight:700}
 
+/* LAYERS band */
+.layers{position:relative;min-height:78vh;display:flex;align-items:center;overflow:hidden;background:#07060a;padding:0}
+.layers-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.9}
+.layers-over{position:relative;z-index:2;width:100%;padding:90px 0}
+.layers-over::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(7,6,10,.92) 0%,rgba(7,6,10,.6) 46%,rgba(7,6,10,.1) 78%,transparent 100%)}
+.layers-over h2{color:var(--paper);font-size:clamp(1.8rem,4.6vw,3.2rem);margin-top:12px;max-width:760px}
+.layers-over h2 em{font-style:italic;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.layers-chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.layers-chip{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;color:var(--paper);background:rgba(247,245,242,.08);border:1px solid rgba(247,245,242,.18);padding:9px 16px;border-radius:30px;backdrop-filter:blur(6px);transition:.25s}
+.layers-chip:hover{border-color:var(--red-l);transform:translateY(-2px)}
+
 /* METHOD */
 .method{background:var(--paper)}
 .method .sec-head p{color:rgba(52,51,51,.7)}
@@ -210,15 +226,17 @@ footer{background:var(--ink);color:rgba(249,249,249,.4);font-family:var(--mono);
 .refs-wall{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 @media(max-width:900px){.refs-wall{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:520px){.refs-wall{grid-template-columns:1fr}}
-.ref{position:relative;background:var(--white);border:1px solid var(--line);border-radius:18px;height:150px;overflow:hidden;cursor:pointer;outline:none;transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .5s,border-color .4s;will-change:transform}
+.ref{position:relative;background:var(--white);border:1px solid var(--line);border-radius:18px;height:172px;overflow:hidden;cursor:pointer;outline:none;transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .5s,border-color .4s;will-change:transform}
 .ref:focus-visible{box-shadow:0 0 0 3px var(--ac,#ff0033)}
-.ref .ref-logo{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:30px;transition:transform .55s cubic-bezier(.16,1,.3,1),opacity .4s,filter .4s}
+.ref .ref-logo{position:absolute;left:0;right:0;top:0;height:172px;display:flex;align-items:center;justify-content:center;padding:30px;transition:transform .55s cubic-bezier(.16,1,.3,1),opacity .4s,filter .4s}
 .ref .ref-logo img{max-width:130px;max-height:46px;object-fit:contain;filter:grayscale(1) opacity(.7);transition:.4s}
-.ref .ref-name{position:absolute;top:14px;left:16px;font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ac,#ff0033);opacity:0;transform:translateY(-6px);transition:.45s}
-.ref .ref-prev{position:absolute;left:0;right:0;bottom:0;padding:18px 18px 16px;background:linear-gradient(180deg,transparent,var(--white) 38%);transform:translateY(101%);transition:transform .55s cubic-bezier(.16,1,.3,1)}
-.ref .ref-mission{font-size:.86rem;line-height:1.35;color:var(--ink);font-weight:500}
-.ref .ref-kpi{margin-top:10px;display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:.74rem;font-weight:700;color:#fff;background:var(--ac,#ff0033);padding:5px 11px;border-radius:30px}
-.ref .ref-kpi small{font-weight:400;opacity:.85;font-size:.64rem}
+.ref .ref-name{position:absolute;top:14px;left:16px;font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ac,#ff0033);opacity:0;transform:translateY(-6px);transition:.45s;z-index:2}
+.ref .ref-prev{position:absolute;left:0;right:0;bottom:0;top:38px;padding:16px;display:flex;flex-direction:column;justify-content:flex-end;background:linear-gradient(180deg,transparent,var(--white) 30%);transform:translateY(101%);transition:transform .55s cubic-bezier(.16,1,.3,1)}
+.ref .ref-mission{font-size:.84rem;line-height:1.32;color:var(--ink);font-weight:500}
+.ref .ref-bubbles{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px}
+.ref .ref-b{font-family:var(--mono);font-size:.58rem;letter-spacing:.03em;color:var(--blue);background:rgba(76,123,245,.12);border:1px solid rgba(76,123,245,.28);padding:3px 8px;border-radius:20px;opacity:0;transform:translateY(6px)}
+.ref:hover .ref-b,.ref:focus-visible .ref-b{opacity:1;transform:none;transition:opacity .4s,transform .4s}
+.ref .ref-tag{margin-top:10px;align-self:flex-start;font-family:var(--mono);font-size:.62rem;font-weight:700;color:#fff;background:var(--ac,#ff0033);padding:4px 10px;border-radius:30px}
 /* distinct hover motions */
 .ref:hover,.ref:focus-visible{border-color:var(--ac,#ff0033);box-shadow:0 26px 50px -30px rgba(52,51,51,.6)}
 .ref:hover .ref-prev,.ref:focus-visible .ref-prev{transform:translateY(0)}
@@ -238,16 +256,16 @@ footer{background:var(--ink);color:rgba(249,249,249,.4);font-family:var(--mono);
 .testi-score{text-align:right;line-height:1}
 .testi-score .ts-n{font-family:var(--serif);font-size:clamp(2.6rem,6vw,3.8rem);font-weight:600;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
 .testi-score .ts-l{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;color:rgba(28,27,34,.55);text-transform:uppercase;margin-top:6px}
-.testi-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-@media(max-width:760px){.testi-grid{grid-template-columns:1fr}}
-.tcard{position:relative;background:var(--white);border:1px solid var(--line);border-radius:18px;padding:30px 28px 26px;transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s,border-color .4s}
-.tcard:hover{transform:translateY(-5px);border-color:rgba(255,51,92,.4);box-shadow:0 26px 50px -30px rgba(11,10,16,.5)}
-.tcard .q{font-size:1.06rem;line-height:1.5;color:var(--ink-2);font-weight:450}
-.tcard .q::before{content:"“";font-family:var(--serif);font-size:2.4rem;line-height:0;color:var(--red);margin-right:4px;vertical-align:-.35em}
-.tcard .who{margin-top:18px;display:flex;align-items:center;gap:12px}
-.tcard .av{width:38px;height:38px;border-radius:50%;background:var(--grad);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.78rem;font-weight:700;flex-shrink:0}
-.tcard .nm{font-weight:600;font-size:.92rem}
-.tcard .og{font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;color:rgba(28,27,34,.5);text-transform:uppercase}
+.testi-grid{display:flex;flex-direction:column;gap:16px;max-width:700px;margin:0 auto}
+.tbub{display:flex;flex-direction:column;max-width:80%}
+.tbub.l{align-self:flex-start;align-items:flex-start}
+.tbub.r{align-self:flex-end;align-items:flex-end}
+.tbub .bub{position:relative;padding:14px 19px;border-radius:22px;font-size:1rem;line-height:1.45}
+.tbub.l .bub{background:var(--white);border:1px solid var(--line);color:var(--ink-2);border-bottom-left-radius:7px}
+.tbub.r .bub{background:var(--grad);color:#fff;border-bottom-right-radius:7px;box-shadow:0 16px 32px -18px rgba(255,51,92,.55)}
+.tbub .bub-who{margin-top:7px;font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;color:rgba(28,27,34,.55);padding:0 8px}
+.tbub.r .bub-who::before{content:"→ "}
+.tbub.l .bub-who::after{content:" ←"}
 
 /* LAB mini-window chrome */
 .lab-win{display:flex;align-items:center;gap:6px;padding:9px 12px;background:#161615;border-bottom:1px solid rgba(249,249,249,.08)}
@@ -406,7 +424,7 @@ footer{background:var(--ink);color:rgba(249,249,249,.4);font-family:var(--mono);
     <p class="lede reveal" style="transition-delay:.16s" data-i="hero.lede">Tout commence par une intuition. Je la transforme en impact — Design Thinking, recherche client et IA appliquée, jusqu'à la solution livrée et mise en production.</p>
     <p class="sign reveal" style="transition-delay:.24s">« Measure twice, cut once. »</p>
   </div>
-  <div class="scroll-cue"><span data-i="hero.scroll">Défiler</span><span></span></div>
+  <a class="scroll-cue" href="#references"><span data-i="hero.scroll">Défiler</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></a>
 </header>
 
 <!-- BRAND FILM BAND -->
@@ -488,6 +506,18 @@ footer{background:var(--ink);color:rgba(249,249,249,.4);font-family:var(--mono);
       <h2 class="reveal" data-i="exp.title" data-i-html>Six terrains où<br>je crée de la valeur.</h2>
     </div>
     <div class="grid-exp" id="expGrid"></div>
+  </div>
+</section>
+
+<!-- LAYERS · disciplines assemble -->
+<section class="layers" id="layers">
+  <video class="layers-vid" src="assets/video/disassembly.mp4" poster="assets/video/disassembly.jpg" muted loop playsinline preload="metadata" aria-label="Assemblage en couches d'un ordinateur (métaphore des disciplines)"></video>
+  <div class="layers-over">
+    <div class="wrap">
+      <p class="eyebrow reveal" style="color:var(--red-l)" data-i="lay.eyebrow">Comment ça s'assemble</p>
+      <h2 class="reveal" data-i="lay.title" data-i-html>Business, design, IA & ingénierie —<br><em>assemblés couche par couche.</em></h2>
+      <div class="layers-chips reveal" id="layersChips"></div>
+    </div>
   </div>
 </section>
 
@@ -1073,8 +1103,8 @@ function lum(hex){const c=hex.replace('#','');const r=parseInt(c.substr(0,2),16)
 const I18N={
  fr:{
   'nav.refs':'Références','nav.approach':'Approche','nav.expertise':'Expertises','nav.method':'Méthode','nav.lab':'Labo clients','nav.path':'Parcours','nav.projects':'Projets IA','nav.contact':'Contact',
-  'cli.eyebrow':"Ils m'ont fait confiance",'cli.title':"Grands groupes & ETI.<br>Survolez : mission & impact.",'cli.foot':"Indicateurs d'impact simulés à partir de missions réelles.",
-  'bf.eyebrow':"De l'esquisse à l'usage",'bf.title':"Une idée se <em>dessine</em>,<br>puis devient réelle.",'bf.cap1':"Le tracé — designer dans l'âme.",'bf.cap2':"L'usage — l'objet dans la vraie vie.",
+  'cli.eyebrow':"Ils m'ont fait confiance",'cli.title':"Grands groupes & ETI.<br>Survolez : mission & relation.",'cli.foot':"Missions réelles — des relations de quelques mois à près de 20 ans.",
+  'bf.eyebrow':"Ma vision de l'innovation",'bf.title':"Du besoin réel<br>à la <em>valeur diffusée.</em>",'bf.cap1':"J'ancre dans les besoins réels des utilisateurs.",'bf.cap2':"Je crée ce qui se diffuse, s'utilise et crée de la valeur pour l'organisation.",
   'met.eyebrow':"Ma façon d'accompagner",'met.title':"Des modalités vivantes,<br>en présentiel comme en visio.",'met.sub':"Cliquez sur chaque carte : voici les outils concrets que j'anime au quotidien.",
   'lab.eyebrow':'Labo · solutions jouables','lab.title':'Mes clients,<br>en solutions interactives.','lab.sub':"Cinq solutions conçues et déployées avec mes équipes, inspirées de missions réelles. Cliquez : elles s'animent.",
   'hero.eyebrow':'Designer · Entrepreneur · Innovation × IA',
@@ -1082,7 +1112,9 @@ const I18N={
   'hero.lede':"Tout commence par une intuition. Je la transforme en impact — Design Thinking, recherche client et IA appliquée, jusqu'à la solution livrée et mise en production.",
   'hero.scroll':'Défiler',
   'story.eyebrow':'Ma chaîne de valeur','story.title':"De l'intuition à<br>la solution déployée.",'story.sub':"Je maîtrise toute la chaîne — le design et l'IA comme leviers pour avancer.",
-  'testi.eyebrow':'La voix des participants','testi.title':"Ce qu'ils en disent.",'testi.foot':"Verbatims issus du questionnaire de satisfaction — Formation Design Thinking, emlyon (2025).",
+  'testi.eyebrow':'La voix des participants','testi.title':"Un formateur qu'on recommande.",'testi.foot':"Verbatims d'un questionnaire de satisfaction — formation Design Thinking (2025).",
+  'lay.eyebrow':"Comment ça s'assemble",'lay.title':"Business, design, IA & ingénierie —<br><em>assemblés couche par couche.</em>",
+  lchips:['Stratégie business','Design & UX','IA appliquée','Ingénierie & code','Recherche client'],
   'man.eyebrow':'Ce qui me détermine',
   'man.big':"Je crois à l'innovation <b>concrète</b> : celle qui se construit, se teste avec les utilisateurs et se <b>déploie</b>. Designer de formation, entrepreneur dans l'âme, je transforme une intuition stratégique en <b>solution réelle</b> — conçue et mise en production avec mes équipes et moi. Aujourd'hui l'<b>IA appliquée</b> est mon nouveau matériau : je l'intègre au plus près des métiers pour que les organisations passent de la promesse à l'usage.",
   'exp.eyebrow':"Domaines d'expertise",'exp.title':"Six terrains où<br>je crée de la valeur.",
@@ -1093,22 +1125,22 @@ const I18N={
   'ct.eyebrow':'Travaillons ensemble','ct.title':"Un projet d'innovation<br>à <em>déployer</em> ?",
   pills:['Pragmatique','Par la pratique','Design Thinking','Effectuation','Solutions déployées','Vibe-coding','IA appliquée','Facilitation','Recherche qualitative'],
   refs:[
-   ['Sanofi','Lab vision par ordinateur, contrôle qualité production','−40%','temps de contrôle qualité'],
-   ['EDF','Design Thinking parcours client énergie B2B','+14 pts','NPS clients pro'],
-   ['BNP Paribas','Design fiction IA agentique, conseil augmenté','×2.3','vitesse de cadrage projet'],
-   ['Renault Group','Recherche qualitative expérience recharge VE','+22%','satisfaction parcours recharge'],
-   ['Orange','Showroom innovation, dispositifs interactifs déployés','9 pôles','expériences mises en service'],
-   ['Lactalis','Analyse 21 entretiens RH, 14 pays','52','initiatives priorisées'],
-   ['Groupama','POC drone, expertise risque automatisée','−30%','délai d\'expertise sinistre'],
-   ['Nexity','Idéation immobilier, concepts services priorisés','−5 mois','time-to-market offre'],
-   ['Yves Rocher','Recherche shopper, refonte expérience retail','+11%','taux de conversion magasin'],
-   ['bioMérieux','Atelier IA diagnostic, cas d\'usage cadrés','18','cas d\'usage qualifiés'],
-   ['Solvay','Formation IA appliquée, montée en compétence R&D','+65%','adoption outils IA'],
-   ['Ubisoft','Recherche joueurs, synthèse insights produit','×1.8','vitesse de décision produit'],
-   ['Vinci Airports','Design parcours passager, fluidification terminal','−25%','temps d\'attente perçu'],
-   ['Eureden','Kit IA Gemini, mémoire manager déployée','30','cas d\'usage déployés'],
-   ['emlyon','Conception lab innovation, dispositif pédagogique','+28 pts','satisfaction participants'],
-   ['ESSCA','Formation Design Thinking & IA, managers exécutifs','92%','taux de complétion parcours']
+   ['Sanofi',"5 ans d'accompagnement de l'innovation.",["Logiciel","Lab d'innovation","Aménagement","Accompagnement continu"],'5 ans'],
+   ['EDF',"Formation & accompagnement des nouvelles versions B2B et B2C.",["Formation","B2B","B2C"],''],
+   ['BNP Paribas',"Hackathons & projets : IA, mobilité, nouveaux services de prêt.",["Hackathons","IA","Mobilité","Prêts"],''],
+   ['Renault Group',"Près de 20 ans : lancements de modèles & recherche qualitative.",["Lancements","Recherche quali"],'20 ans'],
+   ['Orange',"Lancements de nouveaux modèles + learning expedition.",["Lancements","Learning expedition"],''],
+   ['Lactalis',"Accompagnement du lab d'innovation & des projets.",["Lab d'innovation","Projets"],''],
+   ['Groupama',"Accompagnement de startups & de leur lab d'innovation.",["Startups","Lab d'innovation"],''],
+   ['Nexity',"Accompagnement de leur programme d'innovation.",["Programme innovation"],''],
+   ['Yves Rocher',"Accompagnement de leur programme d'innovation.",["Programme innovation"],''],
+   ['bioMérieux',"Design Thinking santé & diagnostic.",["Design Thinking","Santé"],''],
+   ['Solvay',"Journée Design Thinking & sprint d'innovation.",["Design Thinking","Sprint"],''],
+   ['Ubisoft',"Hackathon & projets d'innovation.",["Hackathon","Projets"],''],
+   ['Vinci Airports',"Innovation de l'expérience passager.",["Expérience passager"],''],
+   ['Eureden',"Conseil & expertise — 3 projets / an depuis 3 ans.",["Conseil","Expertise","3 projets/an"],'3 ans'],
+   ['emlyon',"Formation de hauts potentiels & cadres.",["Formation","Hauts potentiels"],'8 ans'],
+   ['ESSCA',"Formation Design Thinking & IA.",["Formation","IA"],'']
   ],
   exp:[
    ['01',"Gestion de projet","Cadrage, pilotage et livraison de projets d'innovation — du portefeuille d'idées au déploiement opérationnel."],
@@ -1141,15 +1173,15 @@ const I18N={
   ],
   tstat:['4,6/5','satisfaction · 17 répondants'],
   testi:[
-   ["La méthode Design Thinking pour la conduite d'un projet est très intéressante et particulièrement complète. Merci Victor, c'était top !",'Marie-Laure F.','emlyon'],
-   ["Un format mêlant théorie, pratique et échanges sous forme d'ateliers ludiques, qui favorise la coopération et fait émerger des solutions.",'Axelle S.','emlyon'],
-   ["Je réutilise facilement la méthode de Design Thinking — surtout les outils d'idéation, que j'ai vraiment appréciés.",'Mathilde C.','emlyon'],
-   ["Les outils IA, pratiques et faciles à manipuler.",'Mihaela B.','emlyon']
+   ["La méthode Design Thinking pour la conduite d'un projet est très intéressante et particulièrement complète. Merci Victor, c'était top !",'Marie-Laure'],
+   ["Un format mêlant théorie, pratique et échanges sous forme d'ateliers ludiques, qui favorise la coopération et fait émerger des solutions.",'Axelle'],
+   ["Je réutilise facilement la méthode de Design Thinking — surtout les outils d'idéation, que j'ai vraiment appréciés.",'Mathilde'],
+   ["Les outils IA, pratiques et faciles à manipuler.",'Mihaela']
   ],
   tl:[
    ["2017 — aujourd'hui","Exoflow","Cofondateur & designer","Structure d'accompagnement de projets d'innovation créée à la sortie d'école. Aujourd'hui, déploiement de l'IA appliquée et de l'immobilier / géospatial (Luxembourg).",["Conseil stratégique & opérationnel pour les départements innovation de grands groupes et ETI","Sprint Master (Google Sprint) pour startups et intrapreneurs","Structuration de programmes d'innovation par le Design Thinking et l'Effectuation"]],
    ["2022 — aujourd'hui","Acmé","Manager & associé · institut d'étude qualitative","Études qualitatives ancrées terrain : entretiens, analyse verbatim et restitution stratégique pour les marques.",[]],
-   ["2018 — aujourd'hui","emlyon business school & Cité du Design","Professeur vacataire · formateur","Plus de 6 ans de formation par le projet : accompagnement de hauts potentiels sur un an (business model + prototype), formation de cadres intrapreneurs.",["Epitech (100 apprenants), IDEA emlyon × Centrale Lyon (40), École YNOV (200)","Montée en compétence de cadres intrapreneurs chez EDF et Groupama"]]
+   ["2017 — aujourd'hui","emlyon · ESSCA · Rennes School of Business","Professeur vacataire · formateur","Près de 8 ans de formation par le projet et d'accompagnement : hauts potentiels (business model + prototype), cadres intrapreneurs, et de nombreux projets menés en continu.",["Formation Design Thinking & IA : emlyon, ESSCA Business School, Rennes School of Business","Montée en compétence de cadres intrapreneurs (EDF, Groupama)","Accompagnement de nombreux projets depuis près de 8 ans"]]
   ],
   form:[
    ['2017','Master IDEA',"Innovation, Design, Entrepreneurship, Art — double diplôme emlyon × Centrale Lyon. Le socle de mon approche Design Thinking, pragmatique et orientée utilisateur."],
@@ -1158,21 +1190,21 @@ const I18N={
    ["Aujourd'hui",'IA appliquée',"Veille et pratique intensive : intégration de l'IA générative aux métiers, solutions outillées et pédagogie de l'IA pour dirigeants et équipes."]
   ],
   proj:[
-   ['Design Fiction','BNP Paribas — IA agentique','Site cinématique piloté data : 222 artefacts de science-fiction, 100 startups, 62 initiatives bancaires.','BNP Paribas Personal Finance'],
-   ['Design Fiction','France Travail — futurs de l\'emploi','Impacts prospectifs de l\'IA sur le travail : 201 artefacts, 99 startups, 23 signaux faibles.','France Travail'],
-   ['Kit IA','Eureden × Gemini','Site de présentation jouable : 30 cas d\'usage, 9 Gems démo, parcours manager chaîne de valeur.','Eureden'],
-   ['Data-viz quali','Lactalis — HR Lab','Analyse de 21 entretiens RH dans 14 pays : constellation 90 nœuds, portfolio 52 initiatives.','Lactalis (14 pays)'],
-   ['Veille concurrentielle','Alpine — Influencer Intel','Réponse presse/influenceurs vs études CMI : 62 vidéos, 9 pays, 96 verbatims captés en direct.','Renault Group / Alpine'],
-   ['Outil métier','Descours & Cabaud — Reco produit','Moteur de recommandation commerciale sur 7 934 réfs réelles : cross/up-sell, marge cible.','Descours & Cabaud'],
-   ['Formation IA','ESSCA × GL events','Plateforme pédagogique : 6 cours, 4 quiz interactifs, widgets maison (NPS, double diamant…).','ESSCA Executive'],
-   ['Scrollytelling','Sanofi × emlyon LeX','Rappel de visite immersif : démo vision par ordinateur animée, 5 chapitres, Q&A participants.','Sanofi (Lab innovation)'],
+   ['Design Fiction','Banque · IA agentique','Site cinématique piloté data : 222 artefacts de science-fiction, 100 startups, 62 initiatives bancaires.','Grande banque · crédit'],
+   ['Design Fiction','Service public · futurs du travail','Impacts prospectifs de l\'IA sur le travail : 201 artefacts, 99 startups, 23 signaux faibles.','Acteur public de l\'emploi'],
+   ['Kit IA','Coopérative agro × Gemini','Site de présentation jouable : 30 cas d\'usage, 9 Gems démo, parcours manager chaîne de valeur.','Groupe coopératif agro'],
+   ['Data-viz quali','Agroalimentaire · HR Lab','Analyse de 21 entretiens RH dans 14 pays : constellation 90 nœuds, portfolio 52 initiatives.','Leader agroalimentaire · 14 pays'],
+   ['Veille concurrentielle','Auto · Influencer Intel','Réponse presse/influenceurs vs études CMI : 62 vidéos, 9 pays, 96 verbatims captés en direct.','Constructeur automobile'],
+   ['Outil métier','Distribution B2B · Reco produit','Moteur de recommandation commerciale sur 7 934 réfs réelles : cross/up-sell, marge cible.','Distributeur B2B'],
+   ['Formation IA','École × événementiel','Plateforme pédagogique : 6 cours, 4 quiz interactifs, widgets maison (NPS, double diamant…).','Business school exec'],
+   ['Scrollytelling','Pharma × école · LeX','Rappel de visite immersif : démo vision par ordinateur animée, 5 chapitres, Q&A participants.','Groupe pharmaceutique'],
    ['Géospatial','Exoflow — Screening foncier LU','Outil métier promoteur : 6 896 parcelles réelles, zonage PAG sur 121 communes, simulateur faisabilité.','Exoflow · Luxembourg']
   ]
  },
  en:{
   'nav.refs':'References','nav.approach':'Approach','nav.expertise':'Expertise','nav.method':'Method','nav.lab':'Client lab','nav.path':'Career','nav.projects':'AI Projects','nav.contact':'Contact',
-  'cli.eyebrow':'They trusted me','cli.title':'Major groups & mid-caps.<br>Hover: mission & impact.','cli.foot':'Impact figures simulated from real engagements.',
-  'bf.eyebrow':'From sketch to use','bf.title':'An idea is <em>drawn</em>,<br>then becomes real.','bf.cap1':'The line — a designer at heart.','bf.cap2':'The use — the object in real life.',
+  'cli.eyebrow':'They trusted me','cli.title':'Major groups & mid-caps.<br>Hover: mission & relationship.','cli.foot':'Real engagements — relationships from a few months to nearly 20 years.',
+  'bf.eyebrow':'My vision of innovation','bf.title':'From the real need<br>to <em>value, diffused.</em>','bf.cap1':"I anchor in users' real needs.",'bf.cap2':'I build what spreads, gets used and creates value for the organisation.',
   'met.eyebrow':'How I work with you','met.title':'Living formats,<br>on-site and remote.','met.sub':'Click each card: these are the concrete tools I run every day.',
   'lab.eyebrow':'Lab · playable solutions','lab.title':'My clients,<br>as interactive solutions.','lab.sub':'Five solutions designed and deployed with my teams, inspired by real engagements. Click: they come alive.',
   'hero.eyebrow':'Designer · Entrepreneur · Innovation × AI',
@@ -1180,7 +1212,9 @@ const I18N={
   'hero.lede':"It starts with an intuition. I turn it into impact — Design Thinking, customer research and applied AI, all the way to a solution shipped to production.",
   'hero.scroll':'Scroll',
   'story.eyebrow':'My value chain','story.title':'From intuition to<br>a shipped solution.','story.sub':'I master the whole chain — design and AI as the levers that move it forward.',
-  'testi.eyebrow':'In their words','testi.title':'What participants say.','testi.foot':'Verbatims from the satisfaction survey — Design Thinking training, emlyon (2025).',
+  'testi.eyebrow':'In their words','testi.title':'A trainer they recommend.','testi.foot':'Verbatims from a satisfaction survey — Design Thinking training (2025).',
+  'lay.eyebrow':'How it assembles','lay.title':'Business, design, AI & engineering —<br><em>assembled layer by layer.</em>',
+  lchips:['Business strategy','Design & UX','Applied AI','Engineering & code','Customer research'],
   'man.eyebrow':'What drives me',
   'man.big':"I believe in <b>tangible</b> innovation: the kind you build, test with users and actually <b>deploy</b>. A designer by training and an entrepreneur at heart, I turn a strategic intuition into a <b>real solution</b> — designed and shipped to production with my teams and me. Today <b>applied AI</b> is my new material: I embed it as close to the work as possible so organisations move from promise to use.",
   'exp.eyebrow':'Domain expertise','exp.title':'Six grounds where<br>I create value.',
@@ -1191,22 +1225,22 @@ const I18N={
   'ct.eyebrow':"Let's work together",'ct.title':'An innovation project<br>to <em>deploy</em>?',
   pills:['Pragmatic','Hands-on','Design Thinking','Effectuation','Deployed solutions','Vibe-coding','Applied AI','Facilitation','Qualitative research'],
   refs:[
-   ['Sanofi','Computer-vision lab, production quality control','−40%','QC inspection time'],
-   ['EDF','Design Thinking on B2B energy journey','+14 pts','business-customer NPS'],
-   ['BNP Paribas','Agentic-AI design fiction, augmented advisory','×2.3','project framing speed'],
-   ['Renault Group','Qualitative research on EV charging experience','+22%','charging-journey satisfaction'],
-   ['Orange','Innovation showroom, deployed interactive devices','9 hubs','experiences shipped'],
-   ['Lactalis','Analysis of 21 HR interviews, 14 countries','52','initiatives prioritized'],
-   ['Groupama','Drone POC, automated risk assessment','−30%','claim assessment lead time'],
-   ['Nexity','Real-estate ideation, prioritized service concepts','−5 mo','offer time-to-market'],
-   ['Yves Rocher','Shopper research, retail experience redesign','+11%','in-store conversion rate'],
-   ['bioMérieux','Diagnostics AI workshop, scoped use cases','18','qualified use cases'],
-   ['Solvay','Applied-AI training, R&D upskilling','+65%','AI-tool adoption'],
-   ['Ubisoft','Player research, product insight synthesis','×1.8','product decision speed'],
-   ['Vinci Airports','Passenger journey design, terminal flow','−25%','perceived wait time'],
-   ['Eureden','Gemini AI kit, deployed manager assistant','30','use cases deployed'],
-   ['emlyon','Innovation lab design, learning experience','+28 pts','participant satisfaction'],
-   ['ESSCA','Design Thinking & AI training, executive managers','92%','program completion rate']
+   ['Sanofi',"5 years supporting their innovation.",["Software","Innovation lab","Lab design","Ongoing support"],'5 yrs'],
+   ['EDF',"Training & support on the new B2B and B2C versions.",["Training","B2B","B2C"],''],
+   ['BNP Paribas',"Hackathons & projects: AI, mobility, new lending services.",["Hackathons","AI","Mobility","Lending"],''],
+   ['Renault Group',"Nearly 20 years: model launches & qualitative research.",["Launches","Qual research"],'20 yrs'],
+   ['Orange',"New-model launches + a learning expedition.",["Launches","Learning expedition"],''],
+   ['Lactalis',"Support of the innovation lab & projects.",["Innovation lab","Projects"],''],
+   ['Groupama',"Support of startups & their innovation lab.",["Startups","Innovation lab"],''],
+   ['Nexity',"Support of their innovation programme.",["Innovation programme"],''],
+   ['Yves Rocher',"Support of their innovation programme.",["Innovation programme"],''],
+   ['bioMérieux',"Healthcare & diagnostics Design Thinking.",["Design Thinking","Health"],''],
+   ['Solvay',"Design Thinking day & innovation sprint.",["Design Thinking","Sprint"],''],
+   ['Ubisoft',"Hackathon & innovation projects.",["Hackathon","Projects"],''],
+   ['Vinci Airports',"Passenger-experience innovation.",["Passenger XP"],''],
+   ['Eureden',"Advisory & expertise — 3 projects / yr for 3 years.",["Advisory","Expertise","3 projects/yr"],'3 yrs'],
+   ['emlyon',"Training high-potentials & managers.",["Training","High-potentials"],'8 yrs'],
+   ['ESSCA',"Design Thinking & AI training.",["Training","AI"],'']
   ],
   exp:[
    ['01','Project management','Framing, steering and shipping innovation projects — from the idea portfolio to operational rollout.'],
@@ -1239,15 +1273,15 @@ const I18N={
   ],
   tstat:['4.6/5','satisfaction · 17 respondents'],
   testi:[
-   ["The Design Thinking method for running a project is genuinely valuable and remarkably complete. Thank you Victor — it was great!",'Marie-Laure F.','emlyon'],
-   ["A format blending theory, practice and exchange through playful workshops, fostering cooperation and surfacing real solutions.",'Axelle S.','emlyon'],
-   ["I easily reuse the Design Thinking method — especially the ideation tools, which I really appreciated.",'Mathilde C.','emlyon'],
-   ["The AI tools — practical and easy to handle.",'Mihaela B.','emlyon']
+   ["The Design Thinking method for running a project is genuinely valuable and remarkably complete. Thank you Victor — it was great!",'Marie-Laure'],
+   ["A format blending theory, practice and exchange through playful workshops, fostering cooperation and surfacing real solutions.",'Axelle'],
+   ["I easily reuse the Design Thinking method — especially the ideation tools, which I really appreciated.",'Mathilde'],
+   ["The AI tools — practical and easy to handle.",'Mihaela']
   ],
   tl:[
    ['2017 — today','Exoflow','Co-founder & designer','An innovation-project studio started straight out of school. Today: applied AI and real-estate / geospatial work (Luxembourg).',["Strategic & operational consulting for the innovation units of major groups and mid-caps","Sprint Master (Google Sprint) for startups and intrapreneurs","Structuring innovation programmes through Design Thinking and Effectuation"]],
    ['2022 — today','Acmé','Manager & partner · qualitative research institute','Field-grounded qualitative studies: interviews, verbatim analysis and strategic readouts for brands.',[]],
-   ['2018 — today','emlyon business school & Cité du Design','Adjunct lecturer · trainer','6+ years of project-based teaching: year-long coaching of high-potentials (business model + prototype), training intrapreneurial managers.',["Epitech (100 learners), IDEA emlyon × Centrale Lyon (40), YNOV (200)","Upskilling intrapreneurial managers at EDF and Groupama"]]
+   ['2017 — today','emlyon · ESSCA · Rennes School of Business','Adjunct lecturer · trainer','Nearly 8 years of project-based teaching and support: high-potentials (business model + prototype), intrapreneurial managers, and many projects run continuously.',["Design Thinking & AI training: emlyon, ESSCA Business School, Rennes School of Business","Upskilling intrapreneurial managers (EDF, Groupama)","Supporting many projects for nearly 8 years"]]
   ],
   form:[
    ['2017','Master IDEA',"Innovation, Design, Entrepreneurship, Art — emlyon × Centrale Lyon double degree. The foundation of my pragmatic, user-centred Design Thinking approach."],
@@ -1256,14 +1290,14 @@ const I18N={
    ['Today','Applied AI',"Intensive practice and watch: embedding generative AI into the work, tooled solutions and AI pedagogy for leaders and teams."]
   ],
   proj:[
-   ['Design Fiction','BNP Paribas — agentic AI','Data-driven cinematic site: 222 sci-fi artefacts, 100 startups, 62 banking initiatives.','BNP Paribas Personal Finance'],
-   ['Design Fiction','France Travail — futures of work','Prospective impacts of AI on work: 201 artefacts, 99 startups, 23 weak signals.','France Travail'],
-   ['AI Kit','Eureden × Gemini','Playable showcase site: 30 use cases, 9 demo Gems, manager value-chain journey.','Eureden'],
-   ['Qual data-viz','Lactalis — HR Lab','Analysis of 21 HR interviews across 14 countries: 90-node constellation, 52-initiative portfolio.','Lactalis (14 countries)'],
-   ['Competitive intel','Alpine — Influencer Intel','Press/influencer response vs CMI studies: 62 videos, 9 countries, 96 live-captured verbatims.','Renault Group / Alpine'],
-   ['Business tool','Descours & Cabaud — Product reco','Sales recommendation engine on 7,934 real SKUs: cross/up-sell, target margin.','Descours & Cabaud'],
-   ['AI training','ESSCA × GL events','Learning platform: 6 courses, 4 interactive quizzes, custom widgets (NPS, double diamond…).','ESSCA Executive'],
-   ['Scrollytelling','Sanofi × emlyon LeX','Immersive visit recap: animated computer-vision demo, 5 chapters, participant Q&A.','Sanofi (Innovation Lab)'],
+   ['Design Fiction','Bank · agentic AI','Data-driven cinematic site: 222 sci-fi artefacts, 100 startups, 62 banking initiatives.','Major bank · lending'],
+   ['Design Fiction','Public sector · futures of work','Prospective impacts of AI on work: 201 artefacts, 99 startups, 23 weak signals.','Public employment body'],
+   ['AI Kit','Agri co-op × Gemini','Playable showcase site: 30 use cases, 9 demo Gems, manager value-chain journey.','Agri-food cooperative'],
+   ['Qual data-viz','Food group · HR Lab','Analysis of 21 HR interviews across 14 countries: 90-node constellation, 52-initiative portfolio.','Food-industry leader · 14 countries'],
+   ['Competitive intel','Auto · Influencer Intel','Press/influencer response vs CMI studies: 62 videos, 9 countries, 96 live-captured verbatims.','Car manufacturer'],
+   ['Business tool','B2B distribution · Product reco','Sales recommendation engine on 7,934 real SKUs: cross/up-sell, target margin.','B2B distributor'],
+   ['AI training','School × events','Learning platform: 6 courses, 4 interactive quizzes, custom widgets (NPS, double diamond…).','Executive business school'],
+   ['Scrollytelling','Pharma × school · LeX','Immersive visit recap: animated computer-vision demo, 5 chapters, participant Q&A.','Pharmaceutical group'],
    ['Geospatial','Exoflow — LU land screening','Developer tool: 6,896 real parcels, PAG zoning over 121 municipalities, feasibility simulator.','Exoflow · Luxembourg']
   ]
  }
@@ -1382,10 +1416,11 @@ function render(lang){
    lg.appendChild(c);});
  // references wall
  const rw=document.getElementById('refsWall');if(rw){rw.innerHTML='';
-  (t.refs||[]).forEach((r,i)=>{const[slug,ext,ac]=REF_META[i];const kt=lum(ac)>.62?'#1a1a1a':'#fff';
+  (t.refs||[]).forEach((r,i)=>{const[slug,ext,ac]=REF_META[i];
     const c=el('div','ref h'+(i%4));c.style.setProperty('--ac',ac);c.setAttribute('tabindex','0');c.setAttribute('role','button');c.setAttribute('aria-label',r[0]);
+    const bub=(r[2]||[]).map((b,bi)=>'<span class="ref-b" style="transition-delay:'+(bi*45)+'ms">'+b+'</span>').join('');
     c.innerHTML='<span class="ref-name">'+r[0]+'</span><div class="ref-logo"><img src="assets/logos/'+slug+'.'+ext+'" alt="'+r[0]+'" loading="lazy"></div>'+
-      '<div class="ref-prev"><div class="ref-mission">'+r[1]+'</div><span class="ref-kpi" style="color:'+kt+'">'+r[2]+' <small>'+r[3]+'</small></span></div>';
+      '<div class="ref-prev"><div class="ref-mission">'+r[1]+'</div><div class="ref-bubbles">'+bub+'</div>'+(r[3]?'<span class="ref-tag">'+r[3]+'</span>':'')+'</div>';
     rw.appendChild(c);});
  }
  // value-chain story (list + CardSwap stack)
@@ -1403,11 +1438,13 @@ function render(lang){
  if(tsc&&tg2&&t.testi){
    tsc.innerHTML='<div class="ts-n">'+t.tstat[0]+'</div><div class="ts-l">'+t.tstat[1]+'</div>';
    tg2.innerHTML='';
-   t.testi.forEach((q,i)=>{const c=el('div','tcard reveal');c.style.transitionDelay=(i%2*.06)+'s';
-     const ini=q[1].split(' ').map(w=>w[0]).join('').slice(0,2);
-     c.innerHTML='<div class="q">'+q[0]+'</div><div class="who"><div class="av">'+ini+'</div><div><div class="nm">'+q[1]+'</div><div class="og">'+q[2]+'</div></div></div>';
+   t.testi.forEach((q,i)=>{const c=el('div','tbub reveal '+(i%2?'r':'l'));c.style.transitionDelay=(i*.09)+'s';
+     c.innerHTML='<div class="bub">'+q[0]+'</div><div class="bub-who">'+q[1]+'</div>';
      tg2.appendChild(c);});
  }
+ // layers chips
+ const lc=document.getElementById('layersChips');
+ if(lc&&t.lchips){lc.innerHTML='';t.lchips.forEach(x=>lc.appendChild(el('span','layers-chip',x)));}
  // border glow on cards
  if(window.initBorderGlow){window.initBorderGlow('.glow');}
  // re-observe reveals
@@ -1440,7 +1477,7 @@ addEventListener('scroll',()=>{
 try{ if(window.initRippleGrid){ window.__rip=window.initRippleGrid(document.querySelector('.hero'),{gridColor:'#ff3357',opacity:0.5,gridSize:15,gridThickness:24,glowIntensity:0.14,vignetteStrength:1.7,rippleIntensity:0.045}); } }catch(e){}
 // brand film: play when in view
 const vio=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;if(e.isIntersecting){v.play&&v.play().catch(()=>{});}else{v.pause&&v.pause();}}),{threshold:.4});
-document.querySelectorAll('.bf-card video').forEach(v=>vio.observe(v));
+document.querySelectorAll('.bf-card video,.layers-vid').forEach(v=>vio.observe(v));
 // spin
 let a=0;(function loop(){a+=.0016;const s=document.querySelector('.spin');if(s)s.style.transform='rotate('+a+'rad)';requestAnimationFrame(loop);})();
 </script>
