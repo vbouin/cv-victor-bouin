@@ -185,6 +185,22 @@ footer{background:var(--ink);color:rgba(249,249,249,.4);font-family:var(--mono);
 .layers-chip{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;color:var(--paper);background:rgba(247,245,242,.08);border:1px solid rgba(247,245,242,.18);padding:9px 16px;border-radius:30px;backdrop-filter:blur(6px);transition:.25s}
 .layers-chip:hover{border-color:var(--red-l);transform:translateY(-2px)}
 
+/* AI & DESIGN VISION scrollytelling */
+.vision{background:var(--ink);color:var(--paper);padding:0;position:relative}
+.vision-intro{min-height:64vh;display:flex;align-items:center;padding:96px 0;position:relative;background:radial-gradient(100% 90% at 82% 0,var(--halo),transparent 52%),var(--ink)}
+.vision-intro h2{color:var(--paper);font-size:clamp(2.2rem,6vw,4.4rem);margin-top:14px;max-width:920px;letter-spacing:-.02em;line-height:1.02}
+.vision-intro h2 em{font-style:italic;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.vision-intro p{margin-top:20px;font-size:1.1rem;color:rgba(247,245,242,.72);max-width:560px}
+.vision-scroll{margin-top:32px;font-family:var(--mono);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--red-l)}
+.vchap{position:relative;min-height:92vh;display:flex;align-items:flex-end;overflow:hidden;border-top:1px solid rgba(255,255,255,.06)}
+.vchap video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vchap::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(7,6,10,.96) 2%,rgba(7,6,10,.55) 42%,rgba(7,6,10,.2) 100%)}
+.vchap .vc-in{position:relative;z-index:2;width:100%;padding-bottom:9vh}
+.vchap .vc-no{font-family:var(--mono);font-size:.7rem;letter-spacing:.22em;color:var(--red-l);text-transform:uppercase}
+.vchap h3{font-family:var(--serif);font-weight:600;font-size:clamp(1.7rem,4.4vw,3rem);color:var(--paper);margin:14px 0 16px;max-width:800px;line-height:1.06;letter-spacing:-.01em}
+.vchap h3 b{color:var(--red-l);font-weight:600}
+.vchap p{font-size:1.06rem;line-height:1.55;color:rgba(247,245,242,.84);max-width:640px}
+
 /* METHOD */
 .method{background:var(--paper)}
 .method .sec-head p{color:rgba(52,51,51,.7)}
@@ -399,6 +415,7 @@ footer{background:var(--ink);color:rgba(249,249,249,.4);font-family:var(--mono);
       <a href="#accompagnement" data-i="nav.method">Méthode</a>
       <a href="#labo" data-i="nav.lab">Labo clients</a>
       <a href="#projets" data-i="nav.projects">Projets IA</a>
+      <a href="#vision" data-i="nav.vision">Vision</a>
       <a href="#contact" data-i="nav.contact">Contact</a>
     </div>
     <div class="lang" role="group" aria-label="Langue">
@@ -577,6 +594,19 @@ footer{background:var(--ink);color:rgba(249,249,249,.4);font-family:var(--mono);
     </div>
     <div class="proj-grid" id="projGrid"></div>
   </div>
+</section>
+
+<!-- AI & DESIGN VISION (scrollytelling) -->
+<section id="vision" class="vision">
+  <div class="vision-intro">
+    <div class="wrap">
+      <p class="eyebrow reveal" data-i="vis.eyebrow">AI &amp; Design Vision</p>
+      <h2 class="reveal" data-i="vis.title" data-i-html>Quand l'IA devient<br>la <em>nouvelle interface</em> de l'innovation.</h2>
+      <p class="reveal" data-i="vis.lede">Une conviction sur ce qui vient — et sur la place, plus centrale que jamais, du design et de la connaissance client.</p>
+      <div class="vision-scroll reveal" data-i="vis.cue">↓ Faites défiler le récit</div>
+    </div>
+  </div>
+  <div class="vision-track" id="visionTrack"></div>
 </section>
 
 <!-- CONTACT -->
@@ -1102,7 +1132,7 @@ function lum(hex){const c=hex.replace('#','');const r=parseInt(c.substr(0,2),16)
 
 const I18N={
  fr:{
-  'nav.refs':'Références','nav.approach':'Approche','nav.expertise':'Expertises','nav.method':'Méthode','nav.lab':'Labo clients','nav.path':'Parcours','nav.projects':'Projets IA','nav.contact':'Contact',
+  'nav.refs':'Références','nav.approach':'Approche','nav.expertise':'Expertises','nav.method':'Méthode','nav.lab':'Labo clients','nav.path':'Parcours','nav.projects':'Projets IA','nav.vision':'Vision','nav.contact':'Contact',
   'cli.eyebrow':"Ils m'ont fait confiance",'cli.title':"Grands groupes & ETI.<br>Survolez : mission & relation.",'cli.foot':"Missions réelles — des relations de quelques mois à près de 20 ans.",
   'bf.eyebrow':"Ma vision de l'innovation",'bf.title':"Du besoin réel<br>à la <em>valeur diffusée.</em>",'bf.cap1':"J'ancre dans les besoins réels des utilisateurs.",'bf.cap2':"Je crée ce qui se diffuse, s'utilise et crée de la valeur pour l'organisation.",
   'met.eyebrow':"Ma façon d'accompagner",'met.title':"Des modalités vivantes,<br>en présentiel comme en visio.",'met.sub':"Cliquez sur chaque carte : voici les outils concrets que j'anime au quotidien.",
@@ -1115,6 +1145,14 @@ const I18N={
   'testi.eyebrow':'La voix des participants','testi.title':"Un formateur qu'on recommande.",'testi.foot':"Verbatims d'un questionnaire de satisfaction — formation Design Thinking (2025).",
   'lay.eyebrow':"Comment ça s'assemble",'lay.title':"Business, design, IA & ingénierie —<br><em>assemblés couche par couche.</em>",
   lchips:['Stratégie business','Design & UX','IA appliquée','Ingénierie & code','Recherche client'],
+  'vis.eyebrow':'AI & Design Vision','vis.title':"Quand l'IA devient<br>la <em>nouvelle interface</em> de l'innovation.",'vis.lede':"Une conviction sur ce qui vient — et sur la place, plus centrale que jamais, du design et de la connaissance client.",'vis.cue':'↓ Faites défiler le récit',
+  vis:[
+   ['replace','01 · Le réflexe',"On commence toujours par parler de <b>remplacement</b>.","« Save our jobs », « don't automate our lives ». La première réaction à l'IA, c'est la peur de disparaître — et une injonction brutale : aller plus vite."],
+   ['speed','02 · L\'injonction',"Plus vite, plus <b>agile</b>, plus créatif.","La vitesse devient la norme : sortir des innovations en semaines, itérer en continu, livrer du concret. L'agilité n'est plus une option, c'est le tempo."],
+   ['interface','03 · La bascule',"L'IA devient l'<b>interface</b> de l'innovation.","Une chance pour les designers et les détenteurs de l'expérience, de la connaissance client et de la data : sortir les innovations plus vite, avec plus d'impact."],
+   ['augment','04 · L\'effet de levier',"Créer des outils dédiés, <b>valoriser l'expertise</b>.","De nouveaux moyens de mieux valoriser l'expertise de vos collaborateurs : assistants métier, outils sur-mesure — l'humain augmenté plutôt que remplacé."],
+   ['interface','05 · Le rôle central',"Le <b>design</b> redevient toujours plus central.","Pour superviser et intégrer l'IA, il faut orchestrer le sens, l'usage et la valeur. C'est exactement le métier du design."]
+  ],
   'man.eyebrow':'Ce qui me détermine',
   'man.big':"Je crois à l'innovation <b>concrète</b> : celle qui se construit, se teste avec les utilisateurs et se <b>déploie</b>. Designer de formation, entrepreneur dans l'âme, je transforme une intuition stratégique en <b>solution réelle</b> — conçue et mise en production avec mes équipes et moi. Aujourd'hui l'<b>IA appliquée</b> est mon nouveau matériau : je l'intègre au plus près des métiers pour que les organisations passent de la promesse à l'usage.",
   'exp.eyebrow':"Domaines d'expertise",'exp.title':"Six terrains où<br>je crée de la valeur.",
@@ -1202,7 +1240,7 @@ const I18N={
   ]
  },
  en:{
-  'nav.refs':'References','nav.approach':'Approach','nav.expertise':'Expertise','nav.method':'Method','nav.lab':'Client lab','nav.path':'Career','nav.projects':'AI Projects','nav.contact':'Contact',
+  'nav.refs':'References','nav.approach':'Approach','nav.expertise':'Expertise','nav.method':'Method','nav.lab':'Client lab','nav.path':'Career','nav.projects':'AI Projects','nav.vision':'Vision','nav.contact':'Contact',
   'cli.eyebrow':'They trusted me','cli.title':'Major groups & mid-caps.<br>Hover: mission & relationship.','cli.foot':'Real engagements — relationships from a few months to nearly 20 years.',
   'bf.eyebrow':'My vision of innovation','bf.title':'From the real need<br>to <em>value, diffused.</em>','bf.cap1':"I anchor in users' real needs.",'bf.cap2':'I build what spreads, gets used and creates value for the organisation.',
   'met.eyebrow':'How I work with you','met.title':'Living formats,<br>on-site and remote.','met.sub':'Click each card: these are the concrete tools I run every day.',
@@ -1215,6 +1253,14 @@ const I18N={
   'testi.eyebrow':'In their words','testi.title':'A trainer they recommend.','testi.foot':'Verbatims from a satisfaction survey — Design Thinking training (2025).',
   'lay.eyebrow':'How it assembles','lay.title':'Business, design, AI & engineering —<br><em>assembled layer by layer.</em>',
   lchips:['Business strategy','Design & UX','Applied AI','Engineering & code','Customer research'],
+  'vis.eyebrow':'AI & Design Vision','vis.title':'When AI becomes<br>the <em>new interface</em> of innovation.','vis.lede':"A conviction about what's coming — and about the more-central-than-ever place of design and customer knowledge.",'vis.cue':'↓ Scroll the story',
+  vis:[
+   ['replace','01 · The reflex',"We always start by talking about <b>replacement</b>.","\"Save our jobs\", \"don't automate our lives.\" The first reaction to AI is the fear of disappearing — and a blunt injunction: move faster."],
+   ['speed','02 · The injunction',"Faster, more <b>agile</b>, more creative.","Speed becomes the norm: ship innovations in weeks, iterate continuously, deliver something real. Agility is no longer optional — it's the tempo."],
+   ['interface','03 · The shift',"AI becomes the <b>interface</b> of innovation.","An opening for designers and the holders of experience, customer knowledge and data: ship innovations faster, with more impact."],
+   ['augment','04 · The leverage',"Build dedicated tools, <b>value expertise</b>.","New ways to better value your people's expertise: domain assistants, bespoke tools — humans augmented rather than replaced."],
+   ['interface','05 · The central role',"<b>Design</b> becomes ever more central.","To supervise and integrate AI, someone must orchestrate meaning, use and value. That is exactly what design does."]
+  ],
   'man.eyebrow':'What drives me',
   'man.big':"I believe in <b>tangible</b> innovation: the kind you build, test with users and actually <b>deploy</b>. A designer by training and an entrepreneur at heart, I turn a strategic intuition into a <b>real solution</b> — designed and shipped to production with my teams and me. Today <b>applied AI</b> is my new material: I embed it as close to the work as possible so organisations move from promise to use.",
   'exp.eyebrow':'Domain expertise','exp.title':'Six grounds where<br>I create value.',
@@ -1370,6 +1416,7 @@ const LAB_ART=[
   `<svg viewBox="0 0 320 220"><rect x="30" y="40" width="150" height="140" rx="8" fill="#0e0e0d" stroke="#2a2a28"/><g opacity=".5"><rect x="44" y="150" width="120" height="9" rx="2" fill="#222"/><rect x="44" y="132" width="120" height="9" rx="2" fill="#222"/><rect x="44" y="114" width="120" height="9" rx="2" fill="#222"/><rect x="44" y="96" width="120" height="9" rx="2" fill="#222"/><rect x="44" y="78" width="120" height="9" rx="2" fill="#222"/></g><g class="rank"><rect x="40" y="150" width="128" height="11" rx="3" fill="#195edd"/></g><text x="46" y="62" fill="#195edd" font-family="monospace" font-size="9">SERP · #8 → #1</text><g class="bub p" transform="translate(196,60)"><rect width="98" height="26" rx="13" fill="#15151a" stroke="#195edd"/><text x="10" y="17" fill="#cfe0ff" font-family="monospace" font-size="8">"intent clair"</text></g><g class="bub b2 p" transform="translate(206,96)"><rect width="98" height="26" rx="13" fill="#15151a" stroke="#195edd"/><text x="10" y="17" fill="#cfe0ff" font-family="monospace" font-size="8">"maillage +"</text></g><g class="bub b3 p" transform="translate(200,132)"><rect width="98" height="26" rx="13" fill="#15151a" stroke="#195edd"/><text x="10" y="17" fill="#cfe0ff" font-family="monospace" font-size="8">"E-E-A-T"</text></g></svg>`]
 ];
 
+const VIS_MEDIA={replace:'vision-replace',speed:'vision-speed',interface:'vision-interface',augment:'vision-augment'};
 let io;
 function render(lang){
  const t=I18N[lang];
@@ -1445,6 +1492,14 @@ function render(lang){
  // layers chips
  const lc=document.getElementById('layersChips');
  if(lc&&t.lchips){lc.innerHTML='';t.lchips.forEach(x=>lc.appendChild(el('span','layers-chip',x)));}
+ // AI & Design Vision chapters
+ const vt=document.getElementById('visionTrack');
+ if(vt&&t.vis){vt.innerHTML='';
+   t.vis.forEach(ch=>{const f=VIS_MEDIA[ch[0]]||'vision-interface';const d=el('div','vchap');
+     d.innerHTML='<video src="assets/video/'+f+'.mp4" poster="assets/video/'+f+'.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><div class="vc-in"><div class="wrap reveal"><div class="vc-no">'+ch[1]+'</div><h3>'+ch[2]+'</h3><p>'+ch[3]+'</p></div></div>';
+     vt.appendChild(d);});
+   if(window.__vio){document.querySelectorAll('.vchap video').forEach(v=>window.__vio.observe(v));}
+ }
  // border glow on cards
  if(window.initBorderGlow){window.initBorderGlow('.glow');}
  // re-observe reveals
@@ -1476,8 +1531,9 @@ addEventListener('scroll',()=>{
 // RippleGrid interactive WebGL background in hero
 try{ if(window.initRippleGrid){ window.__rip=window.initRippleGrid(document.querySelector('.hero'),{gridColor:'#ff3357',opacity:0.5,gridSize:15,gridThickness:24,glowIntensity:0.14,vignetteStrength:1.7,rippleIntensity:0.045}); } }catch(e){}
 // brand film: play when in view
-const vio=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;if(e.isIntersecting){v.play&&v.play().catch(()=>{});}else{v.pause&&v.pause();}}),{threshold:.4});
-document.querySelectorAll('.bf-card video,.layers-vid').forEach(v=>vio.observe(v));
+const vio=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;if(e.isIntersecting){v.play&&v.play().catch(()=>{});}else{v.pause&&v.pause();}}),{threshold:.35});
+window.__vio=vio;
+document.querySelectorAll('.bf-card video,.layers-vid,.vchap video').forEach(v=>vio.observe(v));
 // spin
 let a=0;(function loop(){a+=.0016;const s=document.querySelector('.spin');if(s)s.style.transform='rotate('+a+'rad)';requestAnimationFrame(loop);})();
 </script>
